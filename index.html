@@ -150,6 +150,13 @@ h1{font-size:31px;font-weight:700;color:#fff;text-shadow:0 2px 0 var(--tinta-d),
   .opts{gap:7px;margin-top:9px}
 }
 
+@media (max-height:620px){ .tela{padding-bottom:calc(104px + env(safe-area-inset-bottom))}
+  .opt{padding:8px 10px;font-size:13.5px}
+  .opts{gap:6px;margin-top:8px}
+  .balao{padding:10px 14px;font-size:15px}
+  .dicain{margin-top:7px}
+}
+.dicain{background:#fff6d8;margin-top:9px;-webkit-animation:pop .3s;animation:pop .3s}
 /* cracha no fim */
 .cracha{position:relative;display:-webkit-box;display:-webkit-flex;display:flex;-webkit-box-align:center;-webkit-align-items:center;align-items:center;gap:12px;background:var(--papel);border:2px solid var(--linha);border-bottom-width:5px;border-radius:20px;padding:10px 18px 10px 10px;margin-top:14px;max-width:300px;-webkit-box-shadow:0 8px 18px rgba(50,40,20,.28);box-shadow:0 8px 18px rgba(50,40,20,.28);-webkit-animation:pop .5s;animation:pop .5s}
 .cracha .cfoto{width:62px;height:62px;-webkit-flex:none;flex:none;object-fit:contain;background:#fff6d8;border:2px solid var(--dourado-d);border-radius:50%;padding:3px}
@@ -292,7 +299,8 @@ function pingoEl(tam){
   pingoAtual={el:d,base:b,fala:f,pisca:p};
   return d;
 }
-function limpa(){ app.innerHTML=""; banner.className="banner"; barra.innerHTML=""; btnOuvir=null; btnDica=null; }
+function tiraDica(){ var d=document.getElementById("dicabox"); if(d&&d.parentNode) d.parentNode.removeChild(d); }
+function limpa(){ tiraDica(); app.innerHTML=""; banner.className="banner"; barra.innerHTML=""; btnOuvir=null; btnDica=null; }
 function montaBarra(dId,dTxt){
   barra.innerHTML="";
   btnOuvir=el("button","mini","Ouvir de novo");
@@ -303,12 +311,16 @@ function montaBarra(dId,dTxt){
     btnDica.onclick=function(){ arma(); MED.dicas++; salva(); if(dicaTxt) mostraDica(dicaTxt); falar(dicaId); };
     barra.appendChild(btnDica); }
 }
-function mostraDica(t){
-  var v=document.getElementById("dicabox"); if(v&&v.parentNode)v.parentNode.removeChild(v);
-  var b=el("div","balao",t); b.id="dicabox"; b.style.position="fixed"; b.style.left="12px"; b.style.right="12px";
-  b.style.bottom="86px"; b.style.zIndex="14"; b.style.maxWidth="440px"; b.style.margin="0 auto"; b.style.background="#fff6d8";
-  document.body.appendChild(b);
-  setTimeout(function(){ if(b.parentNode)b.parentNode.removeChild(b); },6500);
+function mostraDica(txt){
+  tiraDica();
+  var tela=app.getElementsByClassName("tela")[0]; if(!tela) return;
+  var b=el("div","balao dicain",txt); b.id="dicabox";
+  var alvos=tela.getElementsByClassName("balao"), ref=null, i;
+  for(i=0;i<alvos.length;i++){ if(alvos[i].id!=="dicabox"){ ref=alvos[i]; break; } }
+  if(ref&&ref.parentNode) ref.parentNode.insertBefore(b,ref.nextSibling);
+  else tela.insertBefore(b,tela.firstChild);
+  try{ tela.scrollTop=0; }catch(e){}
+  setTimeout(function(){ if(b.parentNode)b.parentNode.removeChild(b); },7000);
 }
 function setProg(t,p){var pr=el("div","prog");var i=el("i");i.style.width=p+"%";pr.appendChild(i);t.appendChild(pr);}
 function mostraBanner(msg,cb){bmsg.innerHTML=msg;banner.className="banner bom show";festa();sCerto();bcta.onclick=function(){arma();banner.className="banner";cb();};}
