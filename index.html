@@ -150,6 +150,14 @@ h1{font-size:31px;font-weight:700;color:#fff;text-shadow:0 2px 0 var(--tinta-d),
   .opts{gap:7px;margin-top:9px}
 }
 
+/* cracha no fim */
+.cracha{position:relative;display:-webkit-box;display:-webkit-flex;display:flex;-webkit-box-align:center;-webkit-align-items:center;align-items:center;gap:12px;background:var(--papel);border:2px solid var(--linha);border-bottom-width:5px;border-radius:20px;padding:10px 18px 10px 10px;margin-top:14px;max-width:300px;-webkit-box-shadow:0 8px 18px rgba(50,40,20,.28);box-shadow:0 8px 18px rgba(50,40,20,.28);-webkit-animation:pop .5s;animation:pop .5s}
+.cracha .cfoto{width:62px;height:62px;-webkit-flex:none;flex:none;object-fit:contain;background:#fff6d8;border:2px solid var(--dourado-d);border-radius:50%;padding:3px}
+.cracha .ctx{text-align:left;min-width:0}
+.cracha .csel{font-size:11px;font-weight:700;letter-spacing:.6px;color:var(--tinta-d)}
+.cracha .cnome{font-size:20px;font-weight:700;color:var(--texto);line-height:1.15;word-break:break-word}
+.cracha .cfun{font-size:12px;font-weight:600;color:#8a7f68}
+.cracha:before{content:"";position:absolute;top:-7px;left:50%;margin-left:-11px;width:22px;height:9px;border:2px solid var(--linha);border-bottom:0;border-radius:11px 11px 0 0;background:transparent}
 .grade{display:-webkit-box;display:-webkit-flex;display:flex;-webkit-flex-wrap:wrap;flex-wrap:wrap;width:100%;max-width:328px;margin-top:8px;background:var(--papel);border:2px solid var(--linha);border-radius:14px;padding:5px}
 .cel{width:11.11%;padding-top:0;height:32px;line-height:32px;text-align:center;font-size:15px;font-weight:700;cursor:pointer;color:#5a5346;border-radius:6px}
 .cel.sel{background:var(--dourado);color:#5a4200}
@@ -597,10 +605,22 @@ function vEnsinar(){limpa();var t=el("div","tela");setProg(t,97);var c=el("div",
   montaBarra(null,null);
   falar("vb_ensinar_pede");}
 /* ================= FIM ================= */
+function crachaEl(funcao){
+  var d=el("div","cracha");
+  d.appendChild(imgEl(perfil.fig,"cfoto"));
+  var tx=el("div","ctx");
+  tx.appendChild(el("div","csel","MEU CRACH&#193;"));
+  tx.appendChild(el("div","cnome",perfil.nome||"Rep&#243;rter"));
+  tx.appendChild(el("div","cfun",funcao));
+  d.appendChild(tx);
+  return d;
+}
+
 function vFim(){limpa();var t=el("div","tela");setProg(t,100);var c=el("div","centro");
   c.appendChild(imgEl("vb_med","medal"));
   c.appendChild(el("h1","","Rep&#243;rter Mestre!"));
   c.appendChild(el("div","sub",(perfil.nome?perfil.nome+", a":"A")+" edi&#231;&#227;o est&#225; fechada."));
+  c.appendChild(crachaEl("Rep&#243;rter Mestre"));
   if(MED.manchete){ var m=el("div","balao","Sua manchete: <b>"+MED.manchete+"</b>"); m.style.marginTop="8px"; c.appendChild(m); }
   var b=el("button","btn dourado","Jogar de novo");b.style.marginTop="12px";
   b.onclick=function(){arma();sTap();MIS.v=1;salva();telaMenu();};c.appendChild(b);
@@ -850,6 +870,7 @@ function gFim(){limpa();var t=el("div","tela");setProg(t,100);var c=el("div","ce
   c.appendChild(imgEl("vg_med","medal"));
   c.appendChild(el("h1","","Editor Mestre!"));
   c.appendChild(el("div","sub",(perfil.nome?perfil.nome+", a":"A")+" banca est&#225; arrumada."));
+  c.appendChild(crachaEl("Editor Mestre"));
   var b=el("button","btn dourado","Jogar de novo");b.style.marginTop="12px";
   b.onclick=function(){arma();sTap();MIS.g=1;salva();telaMenu();};c.appendChild(b);
   t.appendChild(c);app.appendChild(t);sFesta();festa();salva();
