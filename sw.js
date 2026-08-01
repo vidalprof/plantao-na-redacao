@@ -1,10 +1,10 @@
 /* Service worker — rede primeiro no HTML; cache primeiro em imagem/áudio. */
-var CACHE="verbos-redacao-v1";
+var CACHE="redacao-pingo-v1";
 var ATIVOS=["./","./index.html","./manifest.json",
  "./img/vb_fundo.jpg","./img/vb_pingo.png","./img/vb_pingo_fala.png","./img/vb_pingo_pisca.png",
- "./img/vb_bola.png","./img/vb_quadro.png","./img/vb_arvore.png","./img/vb_cachorro.png",
- "./img/vb_chuva.png","./img/vb_jornal.png","./img/vb_med.png",
- "./audio/vb_abertura.mp3","./audio/vb_p1_intro.mp3","./audio/vb_p1_prever.mp3"];
+ "./img/vb_bola.png","./img/vg_conto.png",
+ "./img/cr_pingo1.png","./img/cr_pingo2.png","./img/cr_pingo3.png",
+ "./audio/vb_abertura.mp3","./audio/vg_abertura.mp3"];
 self.addEventListener("install",function(e){self.skipWaiting();e.waitUntil(caches.open(CACHE).then(function(c){return c.addAll(ATIVOS).catch(function(){});}));});
 self.addEventListener("activate",function(e){e.waitUntil(caches.keys().then(function(ks){return Promise.all(ks.map(function(k){if(k!==CACHE)return caches.delete(k);}));}));self.clients.claim();});
 function guardar(req,resp){try{if(resp&&resp.status===200&&resp.type==="basic"){var cp=resp.clone();caches.open(CACHE).then(function(c){c.put(req,cp);});}}catch(x){}return resp;}
