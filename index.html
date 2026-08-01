@@ -15,7 +15,7 @@ body{font-family:"Fredoka",ui-rounded,"Segoe UI",system-ui,Arial,sans-serif;colo
 #bg:after{content:"";position:absolute;inset:0;background:-webkit-linear-gradient(top,rgba(255,255,255,.10),rgba(0,0,0,0) 40%,rgba(40,30,10,.18));background:linear-gradient(rgba(255,255,255,.10),rgba(0,0,0,0) 40%,rgba(40,30,10,.18))}
 #po{position:fixed;inset:0;width:100%;height:100%;display:block;z-index:1;pointer-events:none}
 #app{position:fixed;inset:0;z-index:2}
-.tela{position:absolute;inset:0;display:-webkit-box;display:flex;-webkit-box-orient:vertical;-webkit-flex-direction:column;flex-direction:column;-webkit-box-align:center;align-items:center;padding:calc(14px + env(safe-area-inset-top)) 14px calc(74px + env(safe-area-inset-bottom));-webkit-animation:fade .45s;animation:fade .45s}
+.tela{position:absolute;inset:0;overflow-y:auto;-webkit-overflow-scrolling:touch;display:-webkit-box;display:flex;-webkit-box-orient:vertical;-webkit-flex-direction:column;flex-direction:column;-webkit-box-align:center;align-items:center;padding:calc(38px + env(safe-area-inset-top)) 14px calc(86px + env(safe-area-inset-bottom));-webkit-animation:fade .45s;animation:fade .45s}
 @-webkit-keyframes fade{from{opacity:0}to{opacity:1}}@keyframes fade{from{opacity:0}to{opacity:1}}
 .balao{max-width:440px;background:rgba(255,253,244,.96);border-radius:20px;padding:12px 16px;font-size:16.5px;font-weight:600;text-align:center;line-height:1.35;
   -webkit-box-shadow:0 6px 16px rgba(50,40,20,.24);box-shadow:0 6px 16px rgba(50,40,20,.24)}
@@ -103,6 +103,21 @@ h1{font-size:31px;font-weight:700;color:#fff;text-shadow:0 2px 0 var(--tinta-d),
 .painel th{background:#f3f3f3}
 .painel .bloco{border:1px solid #ddd;border-radius:10px;padding:12px;margin-top:12px}
 @media print{.noprint{display:none}}
+
+@media (max-height:720px){
+  .jornal{width:196px}
+  .jornal .manch{font-size:12.5px;top:15%}
+  .opt{padding:10px 12px;font-size:14.5px}
+  .opts{gap:7px;margin-top:10px}
+  .txcard{width:238px;padding:8px 10px}
+  .txic{width:56px;height:56px}
+  .txbody{font-size:12.5px}
+  .foto{width:210px;height:158px}
+  .balao{font-size:15px;padding:10px 13px}
+  .folha{width:214px;padding:11px 13px}
+  .pingo{width:104px;height:104px}.pingo.gg{width:140px;height:140px}.pingo.pq{width:78px;height:78px}
+  .selo{font-size:11.5px;padding:4px 10px;margin-bottom:5px}
+}
 </style></head>
 <body>
 <div id="bg"></div>
@@ -115,7 +130,7 @@ h1{font-size:31px;font-weight:700;color:#fff;text-shadow:0 2px 0 var(--tinta-d),
 <script>
 "use strict";
 /* ================= IMAGENS ================= */
-var IMGS=["vb_pingo","vb_pingo_fala","vb_pingo_pisca","vb_pingo_pensa","vb_bola","vb_quadro","vb_arvore","vb_cachorro","vb_chuva","vb_jornal","vb_med"];
+var IMGS=["vb_pingo","vb_pingo_fala","vb_pingo_pisca","vb_pingo_pensa","vb_bola","vb_quadro","vb_arvore","vb_cachorro","vb_chuva","vb_jornal","vb_med","cr_pingo1","cr_pingo2","cr_pingo3","cr_pingo4","cr_pingo5","cr_pingo6"];
 var IMG={};(function(){var i;for(i=0;i<IMGS.length;i++){var im=new Image();im.src="img/"+IMGS[i]+".png";IMG[IMGS[i]]=im;}})();
 function imgEl(n,c){var e=document.createElement("img");if(c)e.className=c;e.src="img/"+n+".png";e.alt="";e.draggable=false;return e;}
 /* ================= SOM ================= */
@@ -199,7 +214,7 @@ function reg(c,ok,t){ MED.ev.push({c:c,ok:ok?1:0,t:t||1,ms:(new Date()).getTime(
   var p=DOM[c]||0.3; DOM[c]= ok ? p+(1-p)*0.35 : p*0.62; salva(); }
 function salva(){ try{ localStorage.setItem("verbos_med",JSON.stringify({MED:MED,DOM:DOM,perfil:perfil})); }catch(e){} }
 function carrega(){ try{ var s=localStorage.getItem("verbos_med"); if(s){ var d=JSON.parse(s); if(d&&d.DOM)DOM=d.DOM; if(d&&d.perfil)perfil=d.perfil; } }catch(e){} }
-var perfil={nome:"",fig:"vb_pingo"};
+var perfil={nome:"",fig:"cr_pingo1"};
 carrega();
 /* ================= HELPERS ================= */
 var app=document.getElementById("app"),banner=document.getElementById("banner"),bmsg=document.getElementById("bmsg"),bcta=document.getElementById("bcta"),barra=document.getElementById("barra");
@@ -267,7 +282,7 @@ function telaQuem(){limpa();var t=el("div","tela");var c=el("div","centro");
   var inp=el("input","campo");inp.type="text";inp.placeholder="Escreva o seu nome";inp.maxLength=18;inp.value=perfil.nome||"";
   c.appendChild(inp);
   c.appendChild(el("div","hint","Escolha o seu crach&#225;:"));
-  var figs=el("div","figs");var lista=["vb_pingo","vb_bola","vb_quadro","vb_arvore","vb_cachorro","vb_chuva"];var i;
+  var figs=el("div","figs");var lista=["cr_pingo1","cr_pingo2","cr_pingo3","cr_pingo4","cr_pingo5","cr_pingo6"];var i;
   for(i=0;i<lista.length;i++){(function(n){
     var f=el("div","fig"+(perfil.fig===n?" sel":""));f.appendChild(imgEl(n));
     f.onclick=function(){arma();sTap();perfil.fig=n;var a=figs.getElementsByClassName("fig"),k;for(k=0;k<a.length;k++)a[k].className="fig";f.className="fig sel";};
