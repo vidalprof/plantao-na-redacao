@@ -119,6 +119,12 @@ h1{font-size:31px;font-weight:700;color:#fff;text-shadow:0 2px 0 var(--tinta-d),
   .selo{font-size:11.5px;padding:4px 10px;margin-bottom:5px}
 }
 
+.mcard.preso{opacity:.7;cursor:default;background:rgba(238,234,224,.94);border-color:#d7cfbe;-webkit-box-shadow:0 4px 10px rgba(50,40,20,.14);box-shadow:0 4px 10px rgba(50,40,20,.14)}
+.mcard.preso .mt{color:#7d7566}
+.mcard.preso img{-webkit-filter:grayscale(1);filter:grayscale(1);opacity:.55}
+.cad{margin-left:auto;position:relative;width:24px;height:27px;-webkit-flex:none;flex:none}
+.cad i{position:absolute;left:5px;top:0;width:14px;height:12px;border:3px solid #9a917e;border-bottom:0;border-radius:8px 8px 0 0}
+.cad b{position:absolute;left:0;bottom:0;width:24px;height:16px;background:#9a917e;border-radius:5px}
 .miss{display:-webkit-box;display:-webkit-flex;display:flex;-webkit-flex-direction:column;flex-direction:column;gap:12px;width:100%;max-width:360px;margin-top:12px}
 .mcard{background:rgba(255,253,244,.97);border:2px solid var(--linha);border-bottom-width:6px;border-radius:20px;padding:14px 16px;cursor:pointer;text-align:left;-webkit-box-shadow:0 6px 16px rgba(50,40,20,.2);box-shadow:0 6px 16px rgba(50,40,20,.2);display:-webkit-box;display:flex;-webkit-box-align:center;align-items:center;gap:12px}
 .mcard:active{-webkit-transform:translateY(2px);transform:translateY(2px)}
@@ -1088,26 +1094,44 @@ function telaQuem(){limpa();var t=el("div","tela");var c=el("div","centro");
   })(lista[i]);}
   c.appendChild(figs);
   var b=el("button","btn","Vamos!");b.style.marginTop="14px";
-  b.onclick=function(){arma();sTap();perfil.nome=(inp.value||"").substring(0,18);salva();telaMenu();};
+  b.onclick=function(){arma();sTap();
+    var nv=(inp.value||"").substring(0,18);
+    if(chave(nv)!==chave(perfil.nome)) zeraProgresso();
+    perfil.nome=nv;salva();telaMenu();};
   c.appendChild(b);
   t.appendChild(c);app.appendChild(t);}
+function chave(s){ return (s||"").replace(/\s+/g," ").replace(/^ | $/g,"").toLowerCase(); }
+function zeraProgresso(){
+  MIS={v:0,g:0,r:0};
+  MED={ini:(new Date()).getTime(),ev:[],dicas:0,pre:null,pos:null,manchete:""};
+  DOM={identificar:0.3,ofuncao:0.3,tempo:0.3,concordancia:0.3,formato:0.3,funcao:0.3,reconhecer:0.3,producao:0.3};
+}
 function telaMenu(){limpa();var t=el("div","tela");var c=el("div","centro");
   c.appendChild(pingoEl("pq"));
   c.appendChild(el("div","balao","O que a gente vai fazer <b>hoje</b> na reda&#231;&#227;o?"));
   var m=el("div","miss");
-  function card(img,tit,desc,feito,cb){
-    var d=el("div","mcard"+(feito?" feito":""));
+  function card(img,tit,desc,feito,preso,aviso,cb){
+    var d=el("div","mcard"+(feito?" feito":"")+(preso?" preso":""));
     d.appendChild(imgEl(img));
-    var box=el("div"); box.appendChild(el("div","mt",tit)); box.appendChild(el("div","md",desc)); d.appendChild(box);
+    var box=el("div"); box.appendChild(el("div","mt",tit)); box.appendChild(el("div","md",preso?aviso:desc)); d.appendChild(box);
     if(feito) d.appendChild(el("div","ok","feito"));
-    d.onclick=function(){arma();sTap();cb();};
+    else if(preso){ var cd=el("div","cad"); cd.appendChild(el("i")); cd.appendChild(el("b")); d.appendChild(cd); }
+    d.onclick=function(){ arma();
+      if(preso){ sErro(); mostraDica(aviso); return; }
+      sTap(); cb(); };
     m.appendChild(d);
   }
-  card("vb_bola","Miss&#227;o 1: Os verbos","Descubra a palavra que faz a cena acontecer",MIS.v,function(){vAbertura();});
-  card("vg_conto","Miss&#227;o 2: Os g&#234;neros","Arrume a banca: cada texto no seu lugar",MIS.g,function(){gAbertura();});
-  card("vb_jornal","Miss&#227;o 3: Desafio rel&#226;mpago","Contra o rel&#243;gio: &#233; verbo ou n&#227;o &#233;?",MIS.r,function(){telaRelampago();});
+  card("vb_bola","Miss&#227;o 1: Os verbos","Descubra a palavra que faz a cena acontecer",MIS.v,false,"",function(){vAbertura();});
+  card("vg_conto","Miss&#227;o 2: Os g&#234;neros","Arrume a banca: cada texto no seu lugar",MIS.g,!MIS.v,
+       "Abre quando voc&#234; terminar a <b>Miss&#227;o 1</b>.",function(){gAbertura();});
+  card("vb_jornal","Miss&#227;o 3: Desafio rel&#226;mpago","Contra o rel&#243;gio: &#233; verbo ou n&#227;o &#233;?",MIS.r,!MIS.g,
+       "Abre quando voc&#234; terminar a <b>Miss&#227;o 2</b>.",function(){telaRelampago();});
   c.appendChild(m);
-  if(MIS.v&&MIS.g){ var f=el("div","balao","Voc&#234; fechou as <b>duas edi&#231;&#245;es</b>! Pode jogar de novo quando quiser."); f.style.marginTop="12px"; c.appendChild(f); }
+  var av="";
+  if(MIS.v&&MIS.g&&MIS.r) av="Voc&#234; fechou as <b>tr&#234;s miss&#245;es</b>! Pode jogar de novo quando quiser.";
+  else if(MIS.g) av="Voc&#234; abriu o <b>Desafio rel&#226;mpago</b>!";
+  else if(MIS.v) av="Voc&#234; abriu a <b>Miss&#227;o 2</b>!";
+  if(av){ var f=el("div","balao",av); f.style.marginTop="12px"; c.appendChild(f); }
   t.appendChild(c);app.appendChild(t);
   montaBarra(null,null);}
 /* ================= PAINEL (as duas missões) ================= */
