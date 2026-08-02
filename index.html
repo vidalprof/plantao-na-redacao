@@ -163,6 +163,58 @@ h1{font-size:31px;font-weight:700;color:#fff;text-shadow:0 2px 0 var(--tinta-d),
   .dicain{margin-top:7px}
 }
 .dicain{background:#fff6d8;margin-top:9px;-webkit-animation:pop .3s;animation:pop .3s}
+/* ===== MECANICAS NOVAS: caixas / conjugar / corrigir / ordenar / memoria / montar ===== */
+.fichaP{background:var(--papel);border:2px solid var(--linha);border-bottom-width:5px;border-radius:16px;padding:12px 14px;font-size:15.5px;font-weight:700;color:var(--texto);text-align:center;max-width:330px;margin-top:10px;-webkit-box-shadow:0 6px 14px rgba(50,40,20,.22);box-shadow:0 6px 14px rgba(50,40,20,.22);-webkit-animation:pop .3s;animation:pop .3s}
+.caixas{display:-webkit-box;display:-webkit-flex;display:flex;gap:8px;width:100%;max-width:380px;margin-top:12px}
+.cx{-webkit-box-flex:1;-webkit-flex:1;flex:1;background:rgba(255,253,244,.9);border:2px dashed var(--linha);border-radius:16px;padding:10px 6px;text-align:center;cursor:pointer;min-height:72px}
+.cx .cxt{font-size:13px;font-weight:700;color:var(--tinta-d);line-height:1.15}
+.cx .cxn{font-size:20px;font-weight:700;color:#8a8270;margin-top:4px}
+.cx.ok{border-style:solid;border-color:var(--ok);background:#eefbe6}
+.cx.no{border-style:solid;border-color:var(--erro);background:#ffece9;-webkit-animation:shk .4s;animation:shk .4s}
+.conj{width:100%;max-width:340px;margin-top:10px}
+.clin{display:-webkit-box;display:-webkit-flex;display:flex;-webkit-box-align:center;align-items:center;gap:8px;background:var(--papel);border:2px solid var(--linha);border-radius:14px;padding:9px 11px;margin-bottom:8px}
+.clin .cpes{font-size:15px;font-weight:700;color:var(--tinta-d);width:58px;-webkit-flex:none;flex:none;text-align:right}
+.clin .cvaga{-webkit-box-flex:1;-webkit-flex:1;flex:1;min-height:34px;border-bottom:3px dashed #cfc6b0;font-size:16px;font-weight:700;color:var(--texto);text-align:center;line-height:34px}
+.clin.ok{border-color:var(--ok);background:#eefbe6}
+.clin.ok .cvaga{border-bottom-color:var(--ok);color:var(--ok)}
+.pecas{display:-webkit-box;display:-webkit-flex;display:flex;-webkit-flex-wrap:wrap;flex-wrap:wrap;gap:8px;-webkit-box-pack:center;justify-content:center;margin-top:12px;max-width:360px}
+.peca{background:var(--papel);border:2px solid var(--linha);border-bottom-width:5px;border-radius:13px;padding:10px 14px;font-size:16px;font-weight:700;color:var(--texto);cursor:pointer;-webkit-box-shadow:0 5px 11px rgba(50,40,20,.2);box-shadow:0 5px 11px rgba(50,40,20,.2)}
+.peca:active{-webkit-transform:translateY(2px);transform:translateY(2px)}
+.peca.usada{opacity:.25}
+.peca.no{border-color:var(--erro);background:#ffece9;-webkit-animation:shk .4s;animation:shk .4s}
+.prova{background:var(--papel);border:2px solid var(--linha);border-radius:16px;padding:13px 14px;max-width:350px;margin-top:10px;font-size:16px;font-weight:600;line-height:1.75;color:var(--texto);text-align:left;-webkit-box-shadow:0 6px 14px rgba(50,40,20,.2);box-shadow:0 6px 14px rgba(50,40,20,.2)}
+.errow{display:inline-block;padding:1px 5px;border-radius:7px;background:#ffe9c9;border-bottom:3px solid #e8a33a;cursor:pointer;font-weight:700}
+.errow.ok{background:#d8f5c6;border-bottom-color:var(--ok);color:#2c6b13;cursor:default}
+.errow.sel{background:var(--dourado);border-bottom-color:var(--dourado-d)}
+.tira{display:-webkit-box;display:-webkit-flex;display:flex;-webkit-flex-direction:column;flex-direction:column;gap:7px;width:100%;max-width:350px;margin-top:10px}
+.tlin{background:var(--papel);border:2px solid var(--linha);border-bottom-width:4px;border-radius:13px;padding:10px 12px;font-size:14px;font-weight:600;color:var(--texto);cursor:pointer;text-align:left;line-height:1.3}
+.tlin.ok{border-color:var(--ok);background:#eefbe6;cursor:default}
+.tlin.no{border-color:var(--erro);background:#ffece9;-webkit-animation:shk .4s;animation:shk .4s}
+.tnum{display:inline-block;width:22px;height:22px;line-height:22px;border-radius:50%;background:var(--ok);color:#fff;font-size:13px;font-weight:700;text-align:center;margin-right:7px}
+.mcartas{display:-webkit-box;display:-webkit-flex;display:flex;-webkit-flex-wrap:wrap;flex-wrap:wrap;gap:9px;-webkit-box-pack:center;justify-content:center;margin-top:12px;max-width:268px}
+.mcarta{width:126px;height:78px;border-radius:15px;background:-webkit-linear-gradient(top,#5d8ee6,var(--tinta));background:linear-gradient(#5d8ee6,var(--tinta));border:2px solid var(--tinta-d);cursor:pointer;display:-webkit-box;display:-webkit-flex;display:flex;-webkit-box-align:center;align-items:center;-webkit-box-pack:center;justify-content:center;padding:5px;font-size:12.5px;font-weight:700;color:#fff;text-align:center;line-height:1.2;-webkit-box-shadow:0 5px 12px rgba(50,40,20,.24);box-shadow:0 5px 12px rgba(50,40,20,.24)}
+.mcarta.vira{background:var(--papel);border-color:var(--linha);color:var(--texto)}
+.mcarta.par{background:#d8f5c6;border-color:var(--ok);color:#2c6b13}
+.mcarta.no{-webkit-animation:shk .4s;animation:shk .4s}
+.mcarta .cst{width:40px;height:40px;object-fit:contain;opacity:.92}
+.slots{display:-webkit-box;display:-webkit-flex;display:flex;gap:6px;-webkit-box-pack:center;justify-content:center;-webkit-flex-wrap:wrap;flex-wrap:wrap;margin-top:12px}
+.slot{width:40px;height:48px;border-radius:11px;background:rgba(50,44,32,.3);border:2px dashed rgba(255,255,255,.9);text-align:center;line-height:44px;font-size:23px;font-weight:700;color:#fff}
+.slot.cheio{background:var(--papel);border:2px solid var(--ok);border-bottom-width:4px;color:var(--ok);-webkit-animation:pop .3s;animation:pop .3s}
+.letras{display:-webkit-box;display:-webkit-flex;display:flex;-webkit-flex-wrap:wrap;flex-wrap:wrap;gap:7px;-webkit-box-pack:center;justify-content:center;margin-top:14px;max-width:340px}
+.tec{width:44px;height:50px;border-radius:12px;background:var(--papel);border:2px solid var(--linha);border-bottom-width:5px;text-align:center;line-height:44px;font-size:23px;font-weight:700;color:var(--texto);cursor:pointer;-webkit-box-shadow:0 5px 11px rgba(50,40,20,.2);box-shadow:0 5px 11px rgba(50,40,20,.2)}
+.tec:active{-webkit-transform:translateY(2px);transform:translateY(2px)}
+.tec.usada{opacity:.25}
+.tec.no{border-color:var(--erro);background:#ffece9;-webkit-animation:shk .4s;animation:shk .4s}
+@media (max-height:720px){
+  .fichaP{font-size:14px;padding:10px 12px}
+  .cx{min-height:64px}.cx .cxt{font-size:12px}
+  .prova{font-size:14.5px;line-height:1.65}
+  .tlin{font-size:13px;padding:8px 10px}
+  .mcarta{width:116px;height:68px;font-size:11.5px}
+  .tec{width:39px;height:45px;line-height:40px;font-size:21px}
+  .slot{width:35px;height:42px;line-height:38px;font-size:20px}
+  .peca{padding:8px 11px;font-size:15px}
+}
 /* cracha no fim */
 .cracha{position:relative;display:-webkit-box;display:-webkit-flex;display:flex;-webkit-box-align:center;-webkit-align-items:center;align-items:center;gap:12px;background:var(--papel);border:2px solid var(--linha);border-bottom-width:5px;border-radius:20px;padding:10px 18px 10px 10px;margin-top:14px;max-width:300px;-webkit-box-shadow:0 8px 18px rgba(50,40,20,.28);box-shadow:0 8px 18px rgba(50,40,20,.28);-webkit-animation:pop .5s;animation:pop .5s}
 .cracha .cfoto{width:62px;height:62px;-webkit-flex:none;flex:none;object-fit:contain;background:#fff6d8;border:2px solid var(--dourado-d);border-radius:50%;padding:3px}
@@ -399,7 +451,7 @@ function vP1revela(acertou){limpa();var t=el("div","tela");setProg(t,14);var c=e
 function vCaca(){
   var idx=0,err=0;
   function passo(){
-    limpa();var t=el("div","tela");setProg(t,20+idx*6);
+    limpa();var t=el("div","tela");setProg(t,12+idx*3);
     var n=NOTICIAS[idx];
     var c=el("div","centro");
     c.appendChild(el("div","selo","NOT&#205;CIA "+(idx+1)+" DE "+NOTICIAS.length));
@@ -482,7 +534,7 @@ function vTempo(){
   ];
   var idx=0;
   function passo(){
-    limpa();var t=el("div","tela");setProg(t,62+idx*5);
+    limpa();var t=el("div","tela");setProg(t,36+idx*3);
     var cs=casos[idx];var err=0,resp=false;
     var c=el("div","centro");
     c.appendChild(el("div","selo data",cs.data));
@@ -518,7 +570,7 @@ function vErro(){
   ];
   var idx=0;
   function passo(){
-    limpa();var t=el("div","tela");setProg(t,78+idx*4);
+    limpa();var t=el("div","tela");setProg(t,44+idx*3);
     var cs=casos[idx];var err=0,resp=false;
     var c=el("div","centro");
     c.appendChild(el("div","selo","ERRO DE IMPRESS&#195;O"));
@@ -535,7 +587,7 @@ function vErro(){
           reg("concordancia",err===0,err+1);
           setTimeout(function(){ idx++;
             if(idx>=casos.length){ depoisDaFala("vb_p5_revela",9000,function(){
-              mostraBanner("O verbo tem que <b>combinar</b> com quem fez!",vEscreve); }); }
+              mostraBanner("O verbo tem que <b>combinar</b> com quem fez!",vLinha); }); }
             else passo();
           },1500);
         } else { err++;o.className="opt no";sErro();consolo();setTimeout(function(){o.className="opt";},600); }
@@ -647,6 +699,11 @@ function vFim(){limpa();var t=el("div","tela");setProg(t,100);var c=el("div","ce
   falar("vb_fim");}
 /* ================= CONTEÚDO: GÊNEROS TEXTUAIS ================= */
 var GEN={
+ reportagem:{nome:"Reportagem", ic:"vb_jornal", fim:"conta a hist&#243;ria por tr&#225;s da not&#237;cia",
+   txt:"A horta da escola come&#231;ou com uma semente numa garrafa. Hoje s&#227;o vinte canteiros, cuidados por trinta alunos de tr&#234;s turmas."},
+ receita:{nome:"Receita", ic:"vg_verbete", fim:"ensina a fazer, passo a passo",
+   txt:"Suco de laranja da horta.<br>1. Lave quatro laranjas.<br>2. Corte ao meio.<br>3. Esprema no copo.<br>4. Sirva gelado."},
+
  noticia:{nome:"Not&#237;cia", ic:"vb_jornal", fim:"informa o que aconteceu",
    txt:"Ontem, no p&#225;tio da escola, os alunos plantaram uma &#225;rvore. A diretora contou que a horta come&#231;a na semana que vem."},
  poema:{nome:"Poema", ic:"vg_poema", fim:"emociona e brinca com as palavras",
@@ -717,7 +774,7 @@ function gFuncao(){
   var ordem=["noticia","poema","conto","carta","verbete"];
   var idx=0;
   function passo(){
-    limpa();var t=el("div","tela");setProg(t,18+idx*5);
+    limpa();var t=el("div","tela");setProg(t,12+idx*4);
     var k=ordem[idx],g=GEN[k],err=0,resp=false;
     var c=el("div","centro");
     c.appendChild(el("div","selo","PARA QUE SERVE?"));
@@ -734,7 +791,7 @@ function gFuncao(){
         if(txt===g.fim){ resp=true;o.className="opt ok";sCerto();elogio();reg("funcao",err===0,err+1);
           setTimeout(function(){ idx++;
             if(idx>=ordem.length){ depoisDaFala("vg_p2_revela",13000,function(){
-              mostraBanner("Cada g&#234;nero tem a sua <b>fun&#231;&#227;o</b>!",gLigar); }); }
+              mostraBanner("Cada g&#234;nero tem a sua <b>fun&#231;&#227;o</b>!",gCaixas); }); }
             else passo();
           },1100);
         } else { err++;o.className="opt no";sErro();consolo();setTimeout(function(){o.className="opt";},600); }
@@ -782,7 +839,7 @@ function gBanca(){
   passo();
 }
 /* ================= AQUECIMENTO ================= */
-function gAquec(){limpa();var t=el("div","tela");setProg(t,72);var c=el("div","centro");
+function gAquec(){limpa();var t=el("div","tela");setProg(t,62);var c=el("div","centro");
   c.appendChild(pingoEl("pq"));
   c.appendChild(el("div","selo","LEMBRANDO..."));
   c.appendChild(cartaoTexto("verbete",true));
@@ -793,7 +850,7 @@ function gAquec(){limpa();var t=el("div","tela");setProg(t,72);var c=el("div","c
   for(i=0;i<alts.length;i++){(function(txt,certo){
     var o=el("div","opt",txt);
     o.onclick=function(){ if(resp)return; arma();
-      if(certo){resp=true;o.className="opt ok";sCerto();elogio();reg("funcao",true,1);setTimeout(gTrocado,1300);}
+      if(certo){resp=true;o.className="opt ok";sCerto();elogio();reg("funcao",true,1);setTimeout(gEscreve,1300);}
       else{o.className="opt no";sErro();consolo();reg("funcao",false,2);setTimeout(function(){o.className="opt";},700);}
     };
     op.appendChild(o);
@@ -896,8 +953,8 @@ function gFim(){limpa();var t=el("div","tela");setProg(t,100);var c=el("div","ce
   falar("vg_fim");}
 
 /* ================= NOVA 1: CAÇA-PALAVRAS DOS VERBOS ================= */
-var CACA=[{w:"CHUTOU",v:1},{w:"TOCOU",v:1},{w:"PLANTOU",v:1},{w:"ESCREVEU",v:1},{w:"BOLA",v:0},{w:"ESCOLA",v:0}];
-function vCacaPal(){limpa();var t=el("div","tela");setProg(t,30);
+var CACA=[{w:"CHUTOU",v:1},{w:"TOCOU",v:1},{w:"PLANTOU",v:1},{w:"ESCREVEU",v:1},{w:"CORREU",v:1},{w:"ABRIU",v:1},{w:"BOLA",v:0},{w:"ESCOLA",v:0},{w:"JANELA",v:0},{w:"MESA",v:0}];
+function vCacaPal(){limpa();var t=el("div","tela");setProg(t,26);
   var N=9, g=[], i, j;
   for(i=0;i<N;i++){ g[i]=[]; for(j=0;j<N;j++) g[i][j]=""; }
   function cabe(p,r,c,dr,dc){ var k; for(k=0;k<p.length;k++){ var rr=r+dr*k, cc=c+dc*k;
@@ -956,7 +1013,10 @@ function vCacaPal(){limpa();var t=el("div","tela");setProg(t,30);
 var ESCR=[
  {fr:"Ontem, os alunos ___ uma &#225;rvore no p&#225;tio.", vb:"plantar", ok:["plantaram"]},
  {fr:"Agora a professora ___ no quadro.", vb:"escrever", ok:["escreve"]},
- {fr:"Amanh&#227; o sino ___ mais cedo.", vb:"tocar", ok:["vai tocar","tocara","tocará"]}
+ {fr:"Amanh&#227; o sino ___ mais cedo.", vb:"tocar", ok:["vai tocar","tocara","tocará"]},
+ {fr:"Ontem o time ___ o jogo no fim.", vb:"ganhar", ok:["ganhou"]},
+ {fr:"Todo dia n&#243;s ___ o port&#227;o &#224;s sete.", vb:"abrir", ok:["abrimos"]},
+ {fr:"Na segunda a turma ___ a horta.", vb:"visitar", ok:["vai visitar","visitara","visitará"]}
 ];
 function normal(s){ s=(s||"").toLowerCase().replace(/\s+/g," ").replace(/^\s|\s$/g,"");
   var de="áàâãäéèêëíìîïóòôõöúùûüç", pa="aaaaaeeeeiiiiooooouuuuc", i, r="";
@@ -965,7 +1025,7 @@ function normal(s){ s=(s||"").toLowerCase().replace(/\s+/g," ").replace(/^\s|\s$
 function vEscreve(){
   var idx=0, err=0;
   function passo(){
-    limpa();var t=el("div","tela");setProg(t,82+idx*3);
+    limpa();var t=el("div","tela");setProg(t,84+idx*3);
     var e=ESCR[idx];
     var c=el("div","centro");
     c.appendChild(el("div","selo","ESCREVA VOC&#202;"));
@@ -1000,7 +1060,7 @@ function vEscreve(){
   passo();
 }
 /* ================= NOVA 3: LIGAR COLUNAS (gêneros) ================= */
-function gLigar(){limpa();var t=el("div","tela");setProg(t,40);
+function gLigar(){limpa();var t=el("div","tela");setProg(t,50);
   var pares=[["noticia","informar o que aconteceu"],["poema","emocionar com as palavras"],
              ["conto","contar hist&#243;ria inventada"],["carta","falar com algu&#233;m"],["verbete","explicar o que &#233;"]];
   var dir=[3,0,4,1,2], selE=null, feitos=0, err=0;
@@ -1039,7 +1099,7 @@ function gLigar(){limpa();var t=el("div","tela");setProg(t,40);
   montaBarra("vg_ligar_dica","Pense: para que serve esse texto?");
   falar("vg_ligar_intro");}
 /* ================= NOVA 4: DESAFIO RELÂMPAGO ================= */
-var RELA=[["correu",1],["bola",0],["pulou",1],["escola",0],["cantou",1],["mesa",0],["dormiu",1],["janela",0],["comeu",1],["cadeira",0],["abriu",1],["livro",0]];
+var RELA=[["correu",1],["bola",0],["pulou",1],["escola",0],["cantou",1],["mesa",0],["dormiu",1],["janela",0],["comeu",1],["cadeira",0],["abriu",1],["livro",0],["plantou",1],["professora",0],["escreveu",1],["quadro",0],["ganhou",1],["p&#225;tio",0],["visitou",1],["sino",0]];
 function telaRelampago(){limpa();var t=el("div","tela");
   var idx=0, pts=0, tot=RELA.length, fim=false, t0=(new Date()).getTime(), LIM=45000;
   var c=el("div","centro");
@@ -1100,6 +1160,399 @@ function telaQuem(){limpa();var t=el("div","tela");var c=el("div","centro");
     perfil.nome=nv;salva();telaMenu();};
   c.appendChild(b);
   t.appendChild(c);app.appendChild(t);}
+/* ================= HELPERS DAS MECANICAS NOVAS ================= */
+function baguncar(a){var i,j,x;for(i=a.length-1;i>0;i--){j=Math.floor(Math.random()*(i+1));x=a[i];a[i]=a[j];a[j]=x;}return a;}
+
+/* ===== V-A: LINHA DO TEMPO (classificar em 3 caixas) ===== */
+var LINHA=[
+ {f:"Ontem os alunos <b>plantaram</b> uma &#225;rvore.",t:0},
+ {f:"Agora a professora <b>escreve</b> no quadro.",t:1},
+ {f:"Amanh&#227; o sino <b>vai tocar</b> mais cedo.",t:2},
+ {f:"Na semana passada a chuva <b>molhou</b> o p&#225;tio.",t:0},
+ {f:"Neste momento o cachorro <b>dorme</b> na sombra.",t:1},
+ {f:"Na segunda a turma <b>vai visitar</b> a horta.",t:2},
+ {f:"O time <b>ganhou</b> o jogo de ontem.",t:0},
+ {f:"Todo dia o portão <b>abre</b> &#224;s sete.",t:1},
+ {f:"Depois do recreio n&#243;s <b>vamos ensaiar</b>.",t:2}];
+function vLinha(){
+  limpa();var t=el("div","tela");setProg(t,54);
+  var fila=baguncar(LINHA.slice(0)),i2=0,err=0,contas=[0,0,0];
+  var c=el("div","centro");
+  c.appendChild(el("div","selo","LINHA DO TEMPO"));
+  c.appendChild(el("div","balao","Esta frase aconteceu <b>quando</b>? Toque na prateleira certa."));
+  var ficha=el("div","fichaP","");c.appendChild(ficha);
+  var cxs=el("div","caixas"),caixas=[],nomes=["J&#225; foi<br>PASSADO","&#201; agora<br>PRESENTE","Ainda vai<br>FUTURO"];
+  for(i2=0;i2<3;i2++){(function(k){
+    var d=el("div","cx");
+    var lab=el("div","cxt",nomes[k]); var n=el("div","cxn","0");
+    d.appendChild(lab);d.appendChild(n);
+    d.onclick=function(){ resp(k,d,n); };
+    cxs.appendChild(d);caixas.push(d);
+  })(i2);}
+  i2=0;
+  function mostra(){ ficha.innerHTML=fila[i2].f;
+    ficha.style.webkitAnimation="none";ficha.style.animation="none";void ficha.offsetWidth;
+    ficha.style.webkitAnimation="";ficha.style.animation=""; }
+  var fim=false;
+  function resp(k,d,n){ arma();
+    if(fim||i2>=fila.length) return;
+    var certo=(fila[i2].t===k);
+    if(certo){ sCerto(); d.className="cx ok"; contas[k]++; n.innerHTML=contas[k];
+      var ce=centroTela(d); faisca(ce[0],ce[1],"#6bd23f",10);
+      reg("tempo",err===0,err+1); err=0;
+      setTimeout(function(){ d.className="cx"; i2++;
+        if(i2>=fila.length){ fim=true; depoisDaFala("vb_linha_revela",9000,function(){
+          mostraBanner("O verbo muda de forma conforme o <b>tempo</b>!",vConjuga); }); }
+        else mostra();
+      },420);
+    } else { err++; sErro(); consolo(); d.className="cx no";
+      setTimeout(function(){ d.className="cx"; },520); }
+  }
+  c.appendChild(cxs);
+  c.appendChild(el("div","hint","S&#227;o 9 frases."));
+  t.appendChild(c);app.appendChild(t);mostra();
+  montaBarra("vb_linha_dica","Olhe o comecinho: ontem, agora ou amanh&#227;?");
+  falar("vb_linha_intro");
+}
+
+/* ===== V-B: COMPLETE A CONJUGACAO (pecas, sem teclado) ===== */
+var CONJ=[
+ {vb:"escrever",lin:[["Eu","escrevo"],["Voc&#234;","escreve"],["N&#243;s","escrevemos"]],iscas:["escrevem","escrever"]},
+ {vb:"plantar",lin:[["Eu","planto"],["Voc&#234;","planta"],["N&#243;s","plantamos"]],iscas:["plantaram","plantar"]},
+ {vb:"correr",lin:[["Eu","corro"],["Voc&#234;","corre"],["N&#243;s","corremos"]],iscas:["correram","correr"]}];
+function vConjuga(){
+  var idx=0,err=0;
+  function passo(){
+    limpa();var t=el("div","tela");setProg(t,60+idx*3);
+    var cj=CONJ[idx],prox=0;
+    var c=el("div","centro");
+    c.appendChild(el("div","selo","FICHA DO VERBO"));
+    c.appendChild(el("div","balao","Complete a ficha do verbo <b>"+cj.vb+"</b>."));
+    var box=el("div","conj"),vagas=[],i;
+    for(i=0;i<cj.lin.length;i++){(function(k){
+      var l=el("div","clin");
+      l.appendChild(el("div","cpes",cj.lin[k][0]));
+      var v=el("div","cvaga","");l.appendChild(v);
+      box.appendChild(l);vagas.push({lin:l,vaga:v});
+    })(i);}
+    c.appendChild(box);
+    var pecas=el("div","pecas");
+    var todas=[];for(i=0;i<cj.lin.length;i++) todas.push(cj.lin[i][1]);
+    for(i=0;i<cj.iscas.length;i++) todas.push(cj.iscas[i]);
+    baguncar(todas);
+    for(i=0;i<todas.length;i++){(function(txt){
+      var p=el("div","peca",txt);
+      p.onclick=function(){ arma();
+        if(p.className.indexOf("usada")>=0) return;
+        if(txt===cj.lin[prox][1]){
+          vagas[prox].vaga.innerHTML=txt; vagas[prox].lin.className="clin ok";
+          p.className="peca usada"; sPop(prox); prox++;
+          if(prox>=cj.lin.length){
+            reg("concordancia",err===0,err+1);
+            var ce=centroTela(box); faisca(ce[0],ce[1],"#6bd23f",14);
+            setTimeout(function(){ idx++;
+              if(idx>=CONJ.length){ depoisDaFala("vb_conj_revela",9000,function(){
+                mostraBanner("O verbo combina com <b>quem faz</b> a a&#231;&#227;o!",vCorrige); }); }
+              else { err=0; passo(); }
+            },900);
+          }
+        } else { err++; p.className="peca no"; sErro();
+          setTimeout(function(){ if(p.className==="peca no") p.className="peca"; },440);
+          if(err===3) consolo(); }
+      };
+      pecas.appendChild(p);
+    })(todas[i]);}
+    c.appendChild(pecas);
+    c.appendChild(el("div","hint","Cuidado: tem peça que n&#227;o serve."));
+    t.appendChild(c);app.appendChild(t);
+    montaBarra("vb_conj_dica","Fale a frase inteira baixinho: eu... voc&#234;... n&#243;s...");
+    if(idx===0) falar("vb_conj_intro");
+  }
+  passo();
+}
+
+/* ===== V-C: REVISOR (achar e consertar o erro no texto) ===== */
+var PROVA=[
+ {txt:["Os alunos ","%0"," uma &#225;rvore no p&#225;tio da escola. A diretora ","%1"," que a horta come&#231;a na semana que vem. As professoras ","%2"," as sementes na sexta-feira."],
+  erros:[{errado:"plantou",certo:"plantaram",alt:["plantaram","plantavam"]},
+         {errado:"contaram",certo:"contou",alt:["contou","contaria"]},
+         {errado:"trouxe",certo:"trouxeram",alt:["trouxeram","trazia"]}]}];
+function vCorrige(){
+  limpa();var t=el("div","tela");setProg(t,70);
+  var pr=PROVA[0],feitos=0,err=0,aberto=null;
+  var c=el("div","centro");
+  c.appendChild(el("div","selo","REVISOR DO JORNAL"));
+  c.appendChild(el("div","balao","Tem <b>3 verbos errados</b>. Toque no erro e escolha o certo."));
+  var box=el("div","prova"),i;
+  var alvos=[];
+  for(i=0;i<pr.txt.length;i++){
+    var pedaco=pr.txt[i];
+    if(pedaco.charAt(0)==="%"){
+      (function(k){
+        var w=el("span","errow",pr.erros[k].errado);
+        w.onclick=function(){ arma();
+          if(w.className.indexOf("ok")>=0) return;
+          if(aberto&&aberto.w!==w) aberto.w.className="errow";
+          w.className="errow sel"; aberto={w:w,k:k}; mostraOpcoes(k,w); };
+        box.appendChild(w); alvos.push(w);
+      })(parseInt(pedaco.substring(1),10));
+    } else { box.appendChild(el("span","",pedaco)); }
+  }
+  c.appendChild(box);
+  var esc=el("div","pecas");c.appendChild(esc);
+  var dica=el("div","hint","Toque na palavra sublinhada.");c.appendChild(dica);
+  function mostraOpcoes(k,w){
+    esc.innerHTML="";
+    var lista=baguncar(pr.erros[k].alt.slice(0)),j;
+    for(j=0;j<lista.length;j++){(function(op){
+      var p=el("div","peca",op);
+      p.onclick=function(){ arma();
+        if(op===pr.erros[k].certo){
+          w.innerHTML=op; w.className="errow ok"; sCerto(); esc.innerHTML=""; aberto=null;
+          var ce=centroTela(w); faisca(ce[0],ce[1],"#6bd23f",12);
+          reg("concordancia",err===0,err+1); feitos++;
+          if(feitos>=pr.erros.length){ setTimeout(function(){
+            depoisDaFala("vb_corrige_revela",9000,function(){
+              mostraBanner("O verbo combina com <b>quem faz</b>: um ou muitos!",vOrdena); }); },600); }
+        } else { err++; p.className="peca no"; sErro(); consolo();
+          setTimeout(function(){ if(p.className==="peca no") p.className="peca"; },440); }
+      };
+      esc.appendChild(p);
+    })(lista[j]);}
+    dica.innerHTML="Qual forma combina com quem fez?";
+  }
+  t.appendChild(c);app.appendChild(t);
+  montaBarra("vb_corrige_dica","Quem fez? Se s&#227;o muitos, o verbo vai no plural.");
+  falar("vb_corrige_intro");
+}
+
+/* ===== V-D: MONTE A NOTICIA (ordenar as linhas) ===== */
+var ORD=[
+ {t:"O sino da escola tocou sozinho na hora do recreio.",o:0},
+ {t:"Aconteceu ontem, por volta das dez horas da manh&#227;.",o:1},
+ {t:"Os alunos do 4&#186; ano estavam no p&#225;tio e ouviram tudo.",o:2},
+ {t:"O zelador contou que o fio do sino tinha soltado.",o:3}];
+function vOrdena(){
+  limpa();var t=el("div","tela");setProg(t,78);
+  var prox=0,err=0;
+  var c=el("div","centro");
+  c.appendChild(el("div","selo","MONTE A NOT&#205;CIA"));
+  var bal=el("div","balao","Toque na linha que come&#231;a a not&#237;cia: <b>o que aconteceu</b>.");c.appendChild(bal);
+  var tira=el("div","tira"),i;
+  var mix=baguncar(ORD.slice(0));
+  for(i=0;i<mix.length;i++){(function(p){
+    var l=el("div","tlin",p.t);
+    l.onclick=function(){ arma();
+      if(l.className.indexOf("ok")>=0) return;
+      if(p.o===prox){ l.className="tlin ok"; l.innerHTML='<span class="tnum">'+(prox+1)+'</span>'+p.t;
+        sPop(prox); prox++;
+        if(prox<ORD.length){ bal.innerHTML=["","Agora: <b>quando</b> aconteceu.","Agora: <b>quem</b> estava l&#225;.","Agora: <b>por que</b> aconteceu."][prox]; }
+        else { reg("producao",err===0,err+1);
+          setTimeout(function(){ depoisDaFala("vb_ordena_revela",9000,function(){
+            mostraBanner("Not&#237;cia: primeiro o <b>principal</b>, depois os detalhes!",vEscreve); }); },700); }
+      } else { err++; l.className="tlin no"; sErro(); consolo();
+        setTimeout(function(){ if(l.className==="tlin no") l.className="tlin"; },520); }
+    };
+    tira.appendChild(l);
+  })(mix[i]);}
+  c.appendChild(tira);
+  c.appendChild(el("div","hint","S&#227;o 4 linhas, na ordem."));
+  t.appendChild(c);app.appendChild(t);
+  montaBarra("vb_ordena_dica","A primeira linha responde: o que aconteceu?");
+  falar("vb_ordena_intro");
+}
+
+/* ===== G-A: PRATELEIRAS DA BANCA (classificar trechos) ===== */
+var TRECHOS=[
+ {t:"Ontem, &#224;s 9 horas, a turma do 4&#186; ano plantou uma &#225;rvore no p&#225;tio.",g:0},
+ {t:"Era uma vez um sino que s&#243; tocava quando ningu&#233;m estava olhando.",g:1},
+ {t:"Querida diretora, venho pedir mais livros para a biblioteca.",g:2},
+ {t:"A diretora informou que a horta come&#231;a na segunda-feira.",g:0},
+ {t:"Num reino distante, vivia uma menina que falava com as plantas.",g:1},
+ {t:"Prezado prefeito, os alunos gostariam de um parque no bairro.",g:2},
+ {t:"O jogo terminou empatado e o time comemorou mesmo assim.",g:0},
+ {t:"O drag&#227;o abriu os olhos e viu que a caverna estava vazia.",g:1},
+ {t:"Um abra&#231;o da Ana, do 4&#186; ano, que gosta muito de ler.",g:2}];
+function gCaixas(){
+  limpa();var t=el("div","tela");setProg(t,30);
+  var fila=baguncar(TRECHOS.slice(0)),i2=0,err=0,contas=[0,0,0];
+  var c=el("div","centro");
+  c.appendChild(el("div","selo","PRATELEIRAS DA BANCA"));
+  c.appendChild(el("div","balao","Este peda&#231;o &#233; de que tipo de texto?"));
+  var ficha=el("div","fichaP","");c.appendChild(ficha);
+  var cxs=el("div","caixas"),nomes=["Aconteceu<br>NOT&#205;CIA","Inventada<br>CONTO","Para algu&#233;m<br>CARTA"],k;
+  for(k=0;k<3;k++){(function(j){
+    var d=el("div","cx");d.appendChild(el("div","cxt",nomes[j]));
+    var n=el("div","cxn","0");d.appendChild(n);
+    d.onclick=function(){ resp(j,d,n); };
+    cxs.appendChild(d);
+  })(k);}
+  function mostra(){ ficha.innerHTML=fila[i2].t;
+    ficha.style.webkitAnimation="none";ficha.style.animation="none";void ficha.offsetWidth;
+    ficha.style.webkitAnimation="";ficha.style.animation=""; }
+  var fimG=false;
+  function resp(j,d,n){ arma();
+    if(fimG||i2>=fila.length) return;
+    if(fila[i2].g===j){ sCerto(); d.className="cx ok"; contas[j]++; n.innerHTML=contas[j];
+      var ce=centroTela(d); faisca(ce[0],ce[1],"#6bd23f",10);
+      reg("reconhecer",err===0,err+1); err=0;
+      setTimeout(function(){ d.className="cx"; i2++;
+        if(i2>=fila.length){ fimG=true; depoisDaFala("vg_caixas_revela",9000,function(){
+          mostraBanner("Cada texto tem o seu <b>jeito de come&#231;ar</b>!",gMemoria); }); }
+        else mostra();
+      },420);
+    } else { err++; sErro(); consolo(); d.className="cx no";
+      setTimeout(function(){ d.className="cx"; },520); }
+  }
+  c.appendChild(cxs);
+  c.appendChild(el("div","hint","S&#227;o 9 peda&#231;os de texto."));
+  t.appendChild(c);app.appendChild(t);mostra();
+  montaBarra("vg_caixas_dica","Aconteceu de verdade, foi inventado, ou &#233; recado para algu&#233;m?");
+  falar("vg_caixas_intro");
+}
+
+/* ===== G-B: MEMORIA DA BANCA (genero x marca registrada) ===== */
+var MEMG=[{k:"not",a:"NOT&#205;CIA",b:"Conta o que aconteceu de verdade"},
+          {k:"poe",a:"POEMA",b:"Linhas curtas que rimam"},
+          {k:"car",a:"CARTA",b:"Come&#231;a falando com algu&#233;m"},
+          {k:"ver",a:"VERBETE",b:"Explica o que a palavra &#233;"}];
+function gMemoria(){
+  limpa();var t=el("div","tela");setProg(t,42);
+  t.appendChild(el("div","balao","Vire <b>duas cartas</b> e ache o texto junto com a marca dele."));
+  var baralho=[],i;
+  for(i=0;i<MEMG.length;i++){ baralho.push({k:MEMG[i].k,tx:MEMG[i].a,tipo:"n"}); baralho.push({k:MEMG[i].k,tx:MEMG[i].b,tipo:"f"}); }
+  baguncar(baralho);
+  var c=el("div","centro");
+  var box=el("div","mcartas");
+  var aberta=null,trava=false,pares=0,err=0;
+  var VERSO='<img src="img/vb_pingo.png" class="cst" alt="">';
+  for(i=0;i<baralho.length;i++){(function(cc){
+    var e=el("div","mcarta",VERSO);
+    e.onclick=function(){ arma();
+      if(trava) return;
+      if(e.className.indexOf("par")>=0) return;
+      if(aberta&&aberta.el===e) return;
+      e.className="mcarta vira"; e.innerHTML=cc.tx; sTap();
+      if(!aberta){ aberta={el:e,c:cc}; return; }
+      var a=aberta; aberta=null; trava=true;
+      if(a.c.k===cc.k&&a.c.tipo!==cc.tipo){
+        a.el.className="mcarta par"; e.className="mcarta par"; sCerto(); pares++;
+        reg("formato",err===0,err+1);
+        var ce=centroTela(e); faisca(ce[0],ce[1],"#6bd23f",12); trava=false;
+        if(pares>=MEMG.length){ trava=true;
+          setTimeout(function(){ depoisDaFala("vg_mem_revela",8000,function(){
+            mostraBanner("Voc&#234; reconhece o texto s&#243; de <b>bater o olho</b>!",gLigar); }); },500); }
+      } else { err++;
+        a.el.className="mcarta vira no"; e.className="mcarta vira no"; sErro();
+        setTimeout(function(){ a.el.className="mcarta"; a.el.innerHTML=VERSO;
+                               e.className="mcarta"; e.innerHTML=VERSO; trava=false; },950); }
+    };
+    box.appendChild(e);
+  })(baralho[i]);}
+  c.appendChild(box);
+  c.appendChild(el("div","hint","S&#227;o 4 pares."));
+  t.appendChild(c);app.appendChild(t);
+  montaBarra(null,null);
+  falar("vg_mem_intro");
+}
+
+/* ===== G-C: ESCREVA A PRIMEIRA LINHA (producao com teclado) ===== */
+var GESC=[
+ {ped:"Escreva a <b>primeira linha de uma NOT&#205;CIA</b> sobre a horta da escola.",
+  cha:["horta"],ajuda:"Comece contando o que aconteceu. Use a palavra <b>horta</b>."},
+ {ped:"Escreva o <b>come&#231;o de um CONTO</b> sobre um sino m&#225;gico.",
+  cha:["sino"],ajuda:"Conto abre uma hist&#243;ria. Use a palavra <b>sino</b>."},
+ {ped:"Escreva o <b>come&#231;o de uma CARTA</b> para a diretora.",
+  cha:["diretora"],ajuda:"Carta come&#231;a falando com algu&#233;m. Use a palavra <b>diretora</b>."}];
+function gEscreve(){
+  var idx=0,err=0;
+  function passo(){
+    limpa();var t=el("div","tela");setProg(t,68+idx*4);
+    var g=GESC[idx];
+    var c=el("div","centro");
+    c.appendChild(el("div","selo","ESCREVA VOC&#202;"));
+    c.appendChild(el("div","balao",g.ped));
+    var inp=el("input","campo");inp.type="text";inp.placeholder="escreva aqui";inp.autocomplete="off";inp.spellcheck=false;
+    c.appendChild(inp);
+    var fb=el("div","hint","");c.appendChild(fb);
+    var b=el("button","btn peq","Publicar");b.style.marginTop="12px";
+    function tenta(){ arma();
+      var v=normal(inp.value),i,tem=false;
+      for(i=0;i<g.cha.length;i++) if(v.indexOf(normal(g.cha[i]))>=0) tem=true;
+      var palavras=v.replace(/^ | $/g,"").split(/\s+/).length;
+      if(tem&&palavras>=4){
+        sCerto(); sMaquina(); inp.style.borderColor="#3f9a26"; fb.innerHTML="Publicado!";
+        reg("producao",err===0,err+1);
+        var ce=centroTela(inp); faisca(ce[0],ce[1],"#6bd23f",14);
+        setTimeout(function(){ idx++;
+          if(idx>=GESC.length){ depoisDaFala("vg_escreve_revela",9000,function(){
+            mostraBanner("Voc&#234; escreveu nos <b>tr&#234;s</b> jeitos diferentes!",gPalavra); }); }
+          else { err=0; passo(); }
+        },1100);
+      } else { err++; sErro(); inp.style.borderColor="#ef5a4a";
+        fb.innerHTML = tem ? "Escreva um pouquinho mais." : g.ajuda;
+        if(err===2) consolo();
+        setTimeout(function(){ inp.style.borderColor=""; },900); }
+    }
+    b.onclick=tenta;
+    inp.onkeydown=function(ev){ if(ev.keyCode===13) tenta(); };
+    c.appendChild(b);
+    t.appendChild(c);app.appendChild(t);
+    montaBarra("vg_escreve_dica","Cada g&#234;nero tem o seu come&#231;o.");
+    if(idx===0) falar("vg_escreve_intro");
+  }
+  passo();
+}
+
+/* ===== G-D: MONTE O NOME DO TEXTO (letras embaralhadas) ===== */
+var GPAL=[{p:"POEMA",d:"Tem linhas curtinhas e muita rima."},
+          {p:"CONTO",d:"&#201; uma hist&#243;ria inventada, com come&#231;o, meio e fim."},
+          {p:"CARTA",d:"Come&#231;a falando com algu&#233;m e termina com uma despedida."},
+          {p:"NOTICIA",d:"Conta o que aconteceu de verdade, com dia e hora."}];
+function gPalavra(){
+  limpa();var t=el("div","tela");setProg(t,82);
+  var pi=0,err=0;
+  var dica=el("div","balao","");t.appendChild(dica);
+  var c=el("div","centro");
+  var slots=el("div","slots"),letras=el("div","letras");
+  c.appendChild(slots);c.appendChild(letras);
+  c.appendChild(el("div","hint","Toque nas letras na ordem certa."));
+  t.appendChild(c);app.appendChild(t);
+  function pede(){
+    var it=GPAL[pi],i;
+    dica.innerHTML=it.d;
+    slots.innerHTML="";letras.innerHTML="";
+    var caixas=[];
+    for(i=0;i<it.p.length;i++){ var s=el("div","slot",""); slots.appendChild(s); caixas.push(s); }
+    var ls=baguncar(it.p.split(""));
+    var passo=0;
+    for(i=0;i<ls.length;i++){(function(L,pos){
+      var b=el("div","tec",L);
+      b.onclick=function(){ arma();
+        if(b.className.indexOf("usada")>=0) return;
+        if(L===it.p.charAt(passo)){
+          caixas[passo].innerHTML=L; caixas[passo].className="slot cheio";
+          b.className="tec usada"; sPop(passo); passo++;
+          if(passo>=it.p.length){
+            sCerto(); reg("formato",err===0,err+1); err=0;
+            var ce=centroTela(slots); faisca(ce[0],ce[1],"#ffd43b",16);
+            pi++;
+            if(pi>=GPAL.length){
+              setTimeout(function(){ depoisDaFala("vg_palavra_revela",8000,function(){
+                mostraBanner("Voc&#234; sabe o <b>nome</b> de cada tipo de texto!",gTrocado); }); },500);
+            } else setTimeout(pede,780);
+          }
+        } else { err++; b.className="tec no"; sErro();
+          setTimeout(function(){ if(b.className==="tec no") b.className="tec"; },440);
+          if(err===3) consolo(); }
+      };
+      letras.appendChild(b);
+    })(ls[i],i);}
+  }
+  pede();
+  montaBarra("vg_palavra_dica","Leia a pista e fale o nome devagar.");
+  falar("vg_palavra_intro");
+}
 function chave(s){ return (s||"").replace(/\s+/g," ").replace(/^ | $/g,"").toLowerCase(); }
 function zeraProgresso(){
   MIS={v:0,g:0,r:0};
