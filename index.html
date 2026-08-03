@@ -21,8 +21,8 @@ body{font-family:"Fredoka",ui-rounded,"Segoe UI",system-ui,Arial,sans-serif;colo
   -webkit-box-shadow:0 6px 16px rgba(50,40,20,.24);box-shadow:0 6px 16px rgba(50,40,20,.24)}
 .balao b{color:var(--tinta-d)}
 .centro{-webkit-box-flex:1;-webkit-flex:1;flex:1;display:-webkit-box;display:flex;-webkit-box-orient:vertical;-webkit-flex-direction:column;flex-direction:column;-webkit-box-pack:center;justify-content:center;-webkit-box-align:center;align-items:center;width:100%}
-h1{font-size:31px;font-weight:700;color:#fff;text-shadow:0 2px 0 var(--tinta-d),0 4px 10px rgba(0,0,0,.3);margin:6px 0 2px;text-align:center}
-.sub{font-size:15px;color:#fff;font-weight:600;margin-bottom:10px;text-shadow:0 1px 4px rgba(0,0,0,.4)}
+h1{font-size:31px;font-weight:700;color:#fff;text-shadow:0 2px 0 var(--tinta-d),0 4px 10px rgba(0,0,0,.3);margin:6px 0 2px;text-align:center;background:rgba(45,32,14,.72);padding:5px 16px;border-radius:18px}
+.sub{font-size:15px;color:#fff;font-weight:600;margin-bottom:10px;text-shadow:0 1px 4px rgba(0,0,0,.4);background:rgba(45,32,14,.78);padding:6px 14px;border-radius:999px}
 /* mascote em camadas (lip-sync) */
 .pingo{position:relative;width:132px;height:132px;-webkit-filter:drop-shadow(0 8px 10px rgba(0,0,0,.25));filter:drop-shadow(0 8px 10px rgba(0,0,0,.25));-webkit-animation:bob 2.8s ease-in-out infinite;animation:bob 2.8s ease-in-out infinite}
 .pingo.gg{width:180px;height:180px}.pingo.pq{width:92px;height:92px}
@@ -258,7 +258,7 @@ h1{font-size:31px;font-weight:700;color:#fff;text-shadow:0 2px 0 var(--tinta-d),
 .cracha .ctx{text-align:left;min-width:0}
 .cracha .csel{font-size:11px;font-weight:700;letter-spacing:.6px;color:var(--tinta-d)}
 .cracha .cnome{font-size:20px;font-weight:700;color:var(--texto);line-height:1.15;word-break:break-word}
-.cracha .cfun{font-size:12px;font-weight:600;color:#8a7f68}
+.cracha .cfun{font-size:12px;font-weight:600;color:#6b6252}
 .cracha:before{content:"";position:absolute;top:-7px;left:50%;margin-left:-11px;width:22px;height:9px;border:2px solid var(--linha);border-bottom:0;border-radius:11px 11px 0 0;background:transparent}
 .grade{display:-webkit-box;display:-webkit-flex;display:flex;-webkit-flex-wrap:wrap;flex-wrap:wrap;width:100%;max-width:328px;margin-top:8px;background:var(--papel);border:2px solid var(--linha);border-radius:14px;padding:5px}
 .cel{width:11.11%;padding-top:0;height:32px;line-height:32px;text-align:center;font-size:15px;font-weight:700;cursor:pointer;color:#5a5346;border-radius:6px}
@@ -410,6 +410,55 @@ h1{font-size:31px;font-weight:700;color:#fff;text-shadow:0 2px 0 var(--tinta-d),
   .bandeja{min-width:50px;min-height:38px}
   .bandeja .doces{min-height:28px}.bandeja .doces img{width:13px;height:13px}
 }
+
+
+.painel .dom{color:#1e6b10;font-weight:800}
+.painel .cons{color:#8a6a00;font-weight:800}
+.painel .ret{color:#a33020;font-weight:800}
+.painel .resumo{background:#f2f7ea;border:2px solid #cfe0b8;border-radius:12px;padding:10px 12px;margin:10px 0;font-weight:600}
+
+/* boletim animado do fim (a crianca ve) */
+.boletim{background:rgba(255,253,244,.97);border:2px solid var(--linha);border-bottom-width:6px;
+  border-radius:20px;padding:13px 15px;margin-top:12px;width:100%;max-width:360px;
+  -webkit-box-shadow:0 8px 20px rgba(50,40,20,.26);box-shadow:0 8px 20px rgba(50,40,20,.26);
+  -webkit-animation:sobe .5s both .15s;animation:sobe .5s both .15s}
+@-webkit-keyframes sobe{from{opacity:0;-webkit-transform:translateY(16px)}to{opacity:1;-webkit-transform:none}}
+@keyframes sobe{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.boletim .btit{font-size:12px;font-weight:800;letter-spacing:.6px;color:#6b6252;text-align:center;margin-bottom:9px}
+.blin{margin-bottom:9px}
+.btop{display:-webkit-box;display:-webkit-flex;display:flex;-webkit-box-align:center;align-items:center;
+  -webkit-box-pack:justify;justify-content:space-between;gap:8px;margin-bottom:3px}
+.bnome{font-size:13px;font-weight:700;color:#4a4232;text-align:left;line-height:1.2}
+.bestrelas{display:-webkit-box;display:-webkit-flex;display:flex;gap:3px;-webkit-flex-shrink:0;flex-shrink:0}
+.estrela{display:block;width:15px;height:15px;background:#ded6c2;
+  -webkit-clip-path:polygon(50% 0,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);
+  clip-path:polygon(50% 0,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%)}
+.estrela.on{background:#eab000;-webkit-animation:estpop .45s both;animation:estpop .45s both}
+@-webkit-keyframes estpop{0%{-webkit-transform:scale(.2) rotate(-40deg);opacity:0}
+  70%{-webkit-transform:scale(1.35) rotate(6deg);opacity:1}100%{-webkit-transform:none;opacity:1}}
+@keyframes estpop{0%{transform:scale(.2) rotate(-40deg);opacity:0}
+  70%{transform:scale(1.35) rotate(6deg);opacity:1}100%{transform:none;opacity:1}}
+.bbar{height:9px;background:#ece4d2;border-radius:999px;overflow:hidden}
+.bbar i{display:block;height:100%;width:0;border-radius:999px;
+  background:-webkit-linear-gradient(left,#8be05a,#2f8f18);background:linear-gradient(90deg,#8be05a,#2f8f18);
+  -webkit-transition:width 1.1s cubic-bezier(.2,.9,.3,1);transition:width 1.1s cubic-bezier(.2,.9,.3,1)}
+.bplacar{margin-top:10px;text-align:center;font-size:19px;font-weight:800;color:#4a4232}
+.bplacar b{font-size:27px;color:#2f8f18}
+.btempo{text-align:center;font-size:13px;font-weight:600;color:#6b6252;margin-top:2px}
+.bfrase{text-align:center;font-size:14.5px;font-weight:700;color:#4a4232;margin-top:8px;line-height:1.3}
+@media (max-height:600px){
+  .boletim{padding:9px 11px;margin-top:8px;max-width:330px}
+  .bnome{font-size:11.5px}.estrela{width:12px;height:12px}
+  .bbar{height:7px}.blin{margin-bottom:6px}
+  .bplacar{font-size:16px;margin-top:7px}.bplacar b{font-size:22px}
+  .btempo{font-size:11.5px}.bfrase{font-size:12.5px;margin-top:6px}
+}
+
+.btntreino{margin-top:10px;border:0;cursor:pointer;font-family:inherit;font-weight:800;font-size:17px;
+  color:#fff;padding:13px 22px;border-radius:999px;
+  background:-webkit-linear-gradient(top,#3f9a26,#256113);background:linear-gradient(#3f9a26,#256113);
+  -webkit-box-shadow:0 5px 0 #1b4a0c,0 10px 16px rgba(0,0,0,.25);box-shadow:0 5px 0 #1b4a0c,0 10px 16px rgba(0,0,0,.25)}
+.btntreino small{display:block;font-size:12px;font-weight:600;opacity:.92;margin-top:2px}
 </style></head>
 <body>
 <div id="bg"></div>
@@ -851,12 +900,20 @@ function crachaEl(funcao){
 }
 
 function vFim(){limpa();var t=el("div","tela");setProg(t,100);var c=el("div","centro");
-  c.appendChild(imgEl("vb_med","medal"));
+  var med=imgEl("vb_med","medal"); c.appendChild(med); segredoRelatorio(med);
   c.appendChild(el("h1","","Rep&#243;rter Mestre!"));
   c.appendChild(el("div","sub",(perfil.nome?perfil.nome+", a":"A")+" edi&#231;&#227;o est&#225; fechada."));
   c.appendChild(crachaEl("Rep&#243;rter Mestre"));
   if(MED.manchete){ var m=el("div","balao","Sua manchete: <b>"+MED.manchete+"</b>"); m.style.marginTop="8px"; c.appendChild(m); }
+  resumoAnimado(c);
+  if(fracos().length){
+    var bt=el("button","btntreino","Treinar o que faltou<small>s&#243; as partes que voc&#234; quer melhorar</small>");
+    bt.onclick=function(){arma();sTap();treinarFracos();};
+    c.appendChild(bt);
+  }
+
   var b=el("button","btn dourado","Jogar de novo");b.style.marginTop="12px";
+
   b.onclick=function(){arma();sTap();MIS.v=1;salva();telaMenu();};c.appendChild(b);
   t.appendChild(c);app.appendChild(t);sFesta();festa();salva();
   montaBarra(null,null);
@@ -1106,11 +1163,19 @@ function gEnsinar(){limpa();var t=el("div","tela");setProg(t,97);var c=el("div",
   falar("vg_ensinar_pede");}
 /* ================= FIM ================= */
 function gFim(){limpa();var t=el("div","tela");setProg(t,100);var c=el("div","centro");
-  c.appendChild(imgEl("vg_med","medal"));
+  var med2=imgEl("vg_med","medal"); c.appendChild(med2); segredoRelatorio(med2);
   c.appendChild(el("h1","","Editor Mestre!"));
   c.appendChild(el("div","sub",(perfil.nome?perfil.nome+", a":"A")+" banca est&#225; arrumada."));
   c.appendChild(crachaEl("Editor Mestre"));
+  resumoAnimado(c);
+  if(fracos().length){
+    var bt=el("button","btntreino","Treinar o que faltou<small>s&#243; as partes que voc&#234; quer melhorar</small>");
+    bt.onclick=function(){arma();sTap();treinarFracos();};
+    c.appendChild(bt);
+  }
+
   var b=el("button","btn dourado","Jogar de novo");b.style.marginTop="12px";
+
   b.onclick=function(){arma();sTap();MIS.g=1;salva();telaMenu();};c.appendChild(b);
   t.appendChild(c);app.appendChild(t);sFesta();festa();salva();
   montaBarra(null,null);
@@ -1983,6 +2048,125 @@ function telaMenu(){limpa();var t=el("div","tela");var c=el("div","centro");
   t.appendChild(c);app.appendChild(t);
   montaBarra(null,null);}
 /* ================= PAINEL (as duas missões) ================= */
+
+/* ---------- RELATORIO DO FIM (so para o professor) ----------
+   Pedido do Marcos (ago/2026): relatorio no fim da atividade, mas SEM botao e
+   SEM o painel aparecendo para os alunos. Solucao: gesto discreto — segurar a
+   MEDALHA por 2 segundos. Crianca nao descobre; o professor sabe.
+   O ?painel no endereco continua funcionando.                                */
+function segredoRelatorio(elm){
+  if(!elm) return;
+  var tmr=null;
+  function comeca(){ if(tmr) clearTimeout(tmr);
+    tmr=setTimeout(function(){ tmr=null; telaPainel(); },2000); }
+  function para(){ if(tmr){ clearTimeout(tmr); tmr=null; } }
+  elm.addEventListener("mousedown",comeca);
+  elm.addEventListener("touchstart",comeca);
+  elm.addEventListener("mouseup",para);
+  elm.addEventListener("mouseleave",para);
+  elm.addEventListener("touchend",para);
+  elm.addEventListener("touchcancel",para);
+}
+
+/* parecer em PALAVRAS, nao so porcentagem — o professor precisa registrar isso
+   no diario, e "72%" nao diz nada. (pedido do Marcos, ago/2026) */
+function parecerDe(p){
+  if(p>=0.75) return ["Dominou","dom"];
+  if(p>=0.50) return ["Est&#225; construindo","cons"];
+  return ["Precisa retomar","ret"];
+}
+/* ---------- BOLETIM ANIMADO DO FIM (para a CRIANCA ver) ----------
+   Pedido do Marcos (ago/2026): "um final bem legal com animacoes mostrando o
+   desempenho". Regra da casa: NUNCA e prova disfarcada — aqui nao existe nota
+   nem "voce errou". Mostra o que ela APRENDEU, com estrela que acende uma a
+   uma e barra que cresce. O parecer seco (Dominou / Precisa retomar) fica so
+   no relatorio do professor, atras do gesto secreto.                        */
+/* nomes em linguagem de crianca para o boletim do fim */
+var ROTCRI={identificar:"Achar o verbo",ofuncao:"Para que serve o verbo",
+  tempo:"Ontem, hoje e amanh&#227;",concordancia:"Combinar quem faz com a a&#231;&#227;o",
+  formato:"O jeito de cada texto",funcao:"Para que serve cada texto",
+  reconhecer:"Reconhecer o texto",producao:"Escrever o meu texto"};
+function resumoAnimado(pai){
+  var R=(typeof ROTCRI!=="undefined")?ROTCRI:{};
+  var cx=el("div","boletim");
+  cx.appendChild(el("div","btit","O QUE VOC&#202; APRENDEU HOJE"));
+  var k,barras=[],i=0;
+  for(k in DOM){ if(!DOM.hasOwnProperty(k)) continue;
+    var p=DOM[k]||0, n=(p>=0.75)?3:((p>=0.5)?2:1);
+    var nome=String(R[k]||k).replace(/\s*\([^)]*\)/g,"");
+    var ln=el("div","blin");
+    var top=el("div","btop");
+    top.appendChild(el("div","bnome",nome));
+    var est=el("div","bestrelas"),s;
+    for(s=0;s<3;s++){
+      var e=el("i","estrela"+(s<n?" on":""));
+      e.style.webkitAnimationDelay=(320+i*260+s*150)+"ms";
+      e.style.animationDelay=(320+i*260+s*150)+"ms";
+      est.appendChild(e);
+    }
+    top.appendChild(est); ln.appendChild(top);
+    var bar=el("div","bbar"),fi=el("i"); bar.appendChild(fi); ln.appendChild(bar);
+    barras.push([fi,Math.max(8,Math.round(p*100)),320+i*260]);
+    cx.appendChild(ln); i++;
+  }
+  /* acertos subindo de 0 ate o total */
+  var tot=MED.ev.length,acc=0,z;
+  for(z=0;z<MED.ev.length;z++) acc+=MED.ev[z].ok;
+  var mins=Math.max(1,Math.round(((new Date()).getTime()-MED.ini)/60000));
+  var pl=el("div","bplacar","<b>0</b> acertos");
+  cx.appendChild(pl);
+  cx.appendChild(el("div","btempo","Voc&#234; trabalhou <b>"+mins+"</b> minuto"+(mins===1?"":"s")+" sem desistir."));
+  var frase=(acc>=tot*0.8)?"Voc&#234; foi <b>muito bem</b> do come&#231;o ao fim!":
+            ((acc>=tot*0.5)?"Voc&#234; <b>aprendeu bastante</b> hoje. Continua assim!":
+                            "Voc&#234; <b>chegou at&#233; o fim</b>. Isso &#233; o que vale!");
+  cx.appendChild(el("div","bfrase",frase));
+  pai.appendChild(cx);
+  /* as barras crescem depois de entrar na tela (senao nao anima) */
+  setTimeout(function(){ var q;
+    for(q=0;q<barras.length;q++){ (function(b){
+      setTimeout(function(){ b[0].style.width=b[1]+"%"; },b[2]);
+    })(barras[q]); }
+  },60);
+  /* o numero de acertos sobe contando */
+  if(tot>0){ var v=0,pa=Math.max(28,Math.round(1400/Math.max(1,acc)));
+    var tm=setInterval(function(){
+      if(!cx.parentNode){ clearInterval(tm); return; }
+      v++; if(v>acc){ clearInterval(tm); return; }
+      pl.innerHTML="<b>"+v+"</b> acerto"+(v===1?"":"s");
+      try{ tom(520+v*8,0.05,"triangle",0.07); }catch(e){}
+    },pa);
+  }
+}
+/* fases que treinam cada objetivo */
+var TREINO={identificar:vCaca,ofuncao:vFicha,tempo:vTempo,concordancia:vErro,formato:gFormato,funcao:gFuncao,reconhecer:gBanca,producao:gMonta};
+function TELAFIM(){ if(typeof telaMenu==="function") telaMenu(); else vFim(); }
+/* ---------- TREINAR SO O QUE FALTOU ----------
+   Pergunta do Marcos (ago/2026): "se ela nao domina, ela consegue fazer so as
+   atividades que nao domina?". Da: o app ja mede cada objetivo (DOM). Aqui ele
+   monta um percurso CURTO so com as fases dos objetivos fracos e volta para a
+   medalha no fim. A crianca nao repete o que ja sabe — isso e o que mantem ela
+   na tarefa em vez de enjoar.
+   Truque para nao mexer em nenhuma fase: enquanto o treino roda, o mostraBanner
+   ignora o "proximo" original e chama a proxima fase da fila.               */
+var FILATREINO=null;
+var _bannerOriginal=mostraBanner;
+mostraBanner=function(msg,cb){ _bannerOriginal(msg, FILATREINO ? proximoTreino : cb); };
+function fracos(){
+  var k,out=[];
+  for(k in DOM){ if(DOM.hasOwnProperty(k)&&(DOM[k]||0)<0.75&&TREINO[k]) out.push(k); }
+  return out;
+}
+function proximoTreino(){
+  if(!FILATREINO||!FILATREINO.length){ FILATREINO=null; salva(); TELAFIM(); return; }
+  var f=FILATREINO.shift();
+  try{ f(); }catch(e){ proximoTreino(); }
+}
+function treinarFracos(){
+  var f=fracos(),i,fila=[];
+  for(i=0;i<f.length;i++) fila.push(TREINO[f[i]]);
+  if(!fila.length){ TELAFIM(); return; }
+  FILATREINO=fila; proximoTreino();
+}
 function pct(x){return Math.round(x*100)+"%";}
 function telaPainel(){
   try{narr.pause();}catch(e){}
@@ -1993,9 +2177,12 @@ function telaPainel(){
   h+="<div><b>Aluno(a):</b> "+(perfil.nome||"(sem nome)")+" &#183; <b>Tempo:</b> ~"+mins+" min &#183; <b>Dicas usadas:</b> "+MED.dicas+"</div>";
   h+="<div class='bloco'><b>Miss&#245;es conclu&#237;das:</b> "+((MIS.v?"Verbos":"")+(MIS.v&&MIS.g?" e ":"")+(MIS.g?"G&#234;neros":"")||"nenhuma ainda")+"</div>";
   h+="<div class='bloco'><b>Acertos:</b> "+acc+" de "+tot+" ("+(tot?Math.round(acc*100/tot):0)+"%)</div>";
-  h+="<table><tr><th>O que foi medido</th><th>Dom&#237;nio</th></tr>";
-  var k;for(k in CONC){ if(CONC.hasOwnProperty(k)) h+="<tr><td>"+CONC[k]+"</td><td>"+pct(DOM[k]||0)+"</td></tr>"; }
+  h+="<table><tr><th>O que foi medido</th><th>Dom&#237;nio</th><th>Parecer</th></tr>";
+  var k,ndom=0,nconc=0;
+  for(k in CONC){ if(CONC.hasOwnProperty(k)){ var pr=parecerDe(DOM[k]||0); nconc++; if((DOM[k]||0)>=0.75) ndom++;
+    h+="<tr><td>"+CONC[k]+"</td><td>"+pct(DOM[k]||0)+"</td><td class='"+pr[1]+"'>"+pr[0]+"</td></tr>"; } }
   h+="</table>";
+  h+="<div class='resumo'>Resumo da aula: dominou <b>"+ndom+"</b> de <b>"+nconc+"</b> objetivos. "+(ndom===nconc?"Pode seguir para o pr&#243;ximo conte&#250;do.":(ndom>=nconc/2?"Vale retomar os itens marcados em amarelo e vermelho.":"Recomendo repetir a atividade antes de avan&#231;ar."))+"</div>";
   var g="não medido";
   if(MED.pre!==null&&MED.pos!==null){ g=(MED.pre===0&&MED.pos===1)?"GANHO REAL (errou no começo, explicou certo no fim)":(MED.pre===1&&MED.pos===1)?"já sabia e manteve":(MED.pos===0)?"ainda não consolidou":"-"; }
   h+="<div class='bloco'><b>Antes x depois:</b> "+g+"</div>";
