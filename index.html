@@ -263,7 +263,8 @@ h1{font-size:31px;font-weight:700;color:#fff;text-shadow:0 2px 0 var(--tinta-d),
 .grade{display:-webkit-box;display:-webkit-flex;display:flex;-webkit-flex-wrap:wrap;flex-wrap:wrap;width:100%;max-width:328px;margin-top:8px;background:var(--papel);border:2px solid var(--linha);border-radius:14px;padding:5px}
 .cel{width:11.11%;padding-top:0;height:32px;line-height:32px;text-align:center;font-size:15px;font-weight:700;cursor:pointer;color:#5a5346;border-radius:6px}
 .cel.sel{background:var(--dourado);color:#5a4200}
-.cel.ok{background:#cdf0bd;color:#2c6b13}
+.cel.ok{background:-webkit-linear-gradient(top,#6bd23f,#2f8f18);background:linear-gradient(#6bd23f,#2f8f18);color:#fff;font-weight:800;-webkit-box-shadow:inset 0 0 0 1px #24710f;box-shadow:inset 0 0 0 1px #24710f}
+
 .cel.no{background:#ffd3cd;color:#8e2418}
 .cols{display:-webkit-box;display:flex;gap:8px;width:100%;max-width:400px;margin-top:8px}
 .col{-webkit-box-flex:1;-webkit-flex:1;flex:1;display:-webkit-box;display:-webkit-flex;display:flex;-webkit-flex-direction:column;flex-direction:column;gap:7px}
@@ -499,7 +500,7 @@ function vCaca(){
       fo.className="foto viva"; reg("identificar",err===0,err+1); elogio();
       setTimeout(function(){ idx++; err=0;
         if(idx>=NOTICIAS.length){ depoisDaFala("vb_p2_revela",7000,function(){
-          mostraBanner("Voc&#234; achou <b>todos os verbos</b>!",vCacaPal); }); }
+          mostraBanner("Voc&#234; achou <b>todos os verbos</b>!",vFicha); }); }
         else passo();
       },1300);
     },function(){ err++; consolo(); }));
@@ -680,7 +681,7 @@ function vManchete(){limpa();var t=el("div","tela");setProg(t,92);
         var ce=centroTela(jo);faisca(ce[0],ce[1],"#ffd43b",20);
         MED.manchete=(suj.t+" "+vb+" "+txt).replace(/<[^>]*>/g,"");salva();
         setTimeout(function(){ depoisDaFala("vb_p6_revela",8000,function(){
-          mostraBanner("A sua manchete est&#225; na <b>primeira p&#225;gina</b>!",vEnsinar); }); },900);
+          mostraBanner("A sua manchete est&#225; na <b>primeira p&#225;gina</b>!",vCacaPal); }); },900);
       };
       op.appendChild(o);
     })(COMP[i]);}
@@ -992,7 +993,7 @@ function gFim(){limpa();var t=el("div","tela");setProg(t,100);var c=el("div","ce
 
 /* ================= NOVA 1: CAÇA-PALAVRAS DOS VERBOS ================= */
 var CACA=[{w:"CHUTOU",v:1},{w:"TOCOU",v:1},{w:"PLANTOU",v:1},{w:"ESCREVEU",v:1},{w:"CORREU",v:1},{w:"ABRIU",v:1},{w:"BOLA",v:0},{w:"ESCOLA",v:0},{w:"JANELA",v:0},{w:"MESA",v:0}];
-function vCacaPal(){limpa();var t=el("div","tela");setProg(t,26);
+function vCacaPal(){limpa();var t=el("div","tela");setProg(t,94);
   var N=9, g=[], i, j;
   for(i=0;i<N;i++){ g[i]=[]; for(j=0;j<N;j++) g[i][j]=""; }
   function cabe(p,r,c,dr,dc){ var k; for(k=0;k<p.length;k++){ var rr=r+dr*k, cc=c+dc*k;
@@ -1032,7 +1033,7 @@ function vCacaPal(){limpa();var t=el("div","tela");setProg(t,26);
           cont.innerHTML="Achou <b>"+achados+"</b> de <b>"+alvos+"</b> verbos!";
           if(achados>=alvos){ reg("identificar",err===0,err+1);
             setTimeout(function(){ depoisDaFala("vb_caca_revela",9000,function(){
-              mostraBanner("Verbo &#233; <b>a&#231;&#227;o</b>. Substantivo &#233; <b>nome</b>.",vFicha); }); },700); }
+              mostraBanner("Verbo &#233; <b>a&#231;&#227;o</b>. Substantivo &#233; <b>nome</b>.",vEnsinar); }); },700); }
         } else if(achou&&!achou.v){ err++; sErro();
           for(k=0;k<cam.length;k++){ cels[cam[k]].className="cel no"; }
           cont.innerHTML="<b>"+achou.w+"</b> &#233; um <b>substantivo</b> (nome de coisa). Procure a <b>a&#231;&#227;o</b>!";
