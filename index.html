@@ -459,6 +459,21 @@ h1{font-size:31px;font-weight:700;color:#fff;text-shadow:0 2px 0 var(--tinta-d),
   background:-webkit-linear-gradient(top,#3f9a26,#256113);background:linear-gradient(#3f9a26,#256113);
   -webkit-box-shadow:0 5px 0 #1b4a0c,0 10px 16px rgba(0,0,0,.25);box-shadow:0 5px 0 #1b4a0c,0 10px 16px rgba(0,0,0,.25)}
 .btntreino small{display:block;font-size:12px;font-weight:600;opacity:.92;margin-top:2px}
+
+/* ===== CONTRASTE (banca de acessibilidade, ago/2026) =====
+   Mesma historia da Legenda do Clique: a atividade nasceu antes do auditor que
+   mede o PIXEL real atras do texto, e 51 textos ficavam abaixo do minimo WCAG.
+   A paleta so escurece o necessario; a cara da redacao continua a mesma.      */
+.hint,.placar{background:rgba(46,36,20,.88);padding:6px 13px;border-radius:999px;
+  max-width:340px;text-align:center;line-height:1.3;display:inline-block;text-shadow:none}
+.cnum{color:#241f14;text-shadow:none}
+.selo{background:#5b3fd0}
+.mcard .md{color:#514a3e}
+.mcard.preso{opacity:.88}
+.mcard.preso .mt{color:#4a443a}
+.bin.sim{background:-webkit-linear-gradient(top,#43a01e,#1e6410);background:linear-gradient(#43a01e,#1e6410)}
+.bin.nao{background:-webkit-linear-gradient(top,#e2503f,#a32a1c);background:linear-gradient(#e2503f,#a32a1c)}
+.btn{background:-webkit-linear-gradient(top,#3f7ae0,#17408f);background:linear-gradient(#3f7ae0,#17408f)}
 </style></head>
 <body>
 <div id="bg"></div>
@@ -1031,7 +1046,7 @@ function gBanca(){
   var ordem=["conto","verbete","carta","noticia","poema"];
   var idx=0;
   function passo(){
-    limpa();var t=el("div","tela");setProg(t,46+idx*5);
+    limpa();var t=el("div","tela");setProg(t,52+idx*2);
     var k=ordem[idx],err=0,resp=false;
     var c=el("div","centro");
     c.appendChild(el("div","selo","ARRUME A BANCA"));
@@ -1081,7 +1096,7 @@ function gAquec(){limpa();var t=el("div","tela");setProg(t,62);var c=el("div","c
   montaBarra(null,null);
   falar("vg_aquec_intro");}
 /* ================= P4: TEXTO TROCADO ================= */
-function gTrocado(){limpa();var t=el("div","tela");setProg(t,80);var c=el("div","centro");
+function gTrocado(){limpa();var t=el("div","tela");setProg(t,86);var c=el("div","centro");
   c.appendChild(el("div","selo","SAIU ERRADO!"));
   var jo=el("div","jornal");jo.appendChild(imgEl("vb_jornal"));
   var mm=el("div","manch","Era uma vez um sino m&#225;gico que tocou sozinho...");jo.appendChild(mm);
