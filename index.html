@@ -235,6 +235,23 @@ h1{font-size:31px;font-weight:700;color:#fff;text-shadow:0 2px 0 var(--tinta-d),
 .vida{display:inline-block;width:14px;height:14px;border-radius:50%;background:#ef5a4a;margin-right:4px;-webkit-box-shadow:0 1px 3px rgba(0,0,0,.35);box-shadow:0 1px 3px rgba(0,0,0,.35)}
 .vida.ida{background:rgba(255,255,255,.35)}
 @media (max-height:720px){ .cquad{width:27px;height:30px;line-height:27px;font-size:16px} .altofalante{width:104px;height:70px} }
+/* alto-falante discreto: le a resposta para quem ainda nao le */
+.zap{position:relative;-webkit-flex:none;flex:none;width:30px;height:30px;border-radius:50%;background:rgba(47,107,216,.09);border:0;cursor:pointer;padding:0;margin-left:8px;vertical-align:middle;display:inline-block;opacity:.55;-webkit-transition:opacity .2s;transition:opacity .2s}
+.zap:hover,.zap:active{opacity:1;background:rgba(47,107,216,.2)}
+.zap i{position:absolute;left:8px;top:10px;width:5px;height:10px;background:var(--tinta-d);border-radius:1px}
+.zap b{position:absolute;left:11px;top:7px;width:0;height:0;border-top:8px solid transparent;border-bottom:8px solid transparent;border-right:8px solid var(--tinta-d)}
+.zap s{position:absolute;left:21px;top:9px;width:6px;height:12px;border:2px solid var(--tinta-d);border-left:0;border-top-right-radius:9px;border-bottom-right-radius:9px;text-decoration:none}
+.zap.tocando{opacity:1;background:rgba(255,212,59,.5);-webkit-animation:zpul .8s ease-in-out infinite;animation:zpul .8s ease-in-out infinite}
+@-webkit-keyframes zpul{0%,100%{-webkit-transform:scale(1)}50%{-webkit-transform:scale(1.14)}}
+@keyframes zpul{0%,100%{transform:scale(1)}50%{transform:scale(1.14)}}
+.opt .zap,.lig .zap,.tlin .zap,.fichaP .zap,.peca .zap{margin-left:6px}
+.cx .zap{margin:4px auto 0;display:block}
+@media (max-height:720px){ .zap{width:26px;height:26px;margin-left:5px}
+  .zap i{left:7px;top:9px;height:8px}.zap b{left:9px;top:6px;border-top-width:7px;border-bottom-width:7px;border-right-width:7px}
+  .zap s{left:18px;top:8px;width:5px;height:10px} }
+@media (max-height:620px){ .zap{width:23px;height:23px;margin-left:4px}
+  .zap i{left:6px;top:8px;height:7px}.zap b{left:8px;top:5px;border-top-width:6px;border-bottom-width:6px;border-right-width:6px}
+  .zap s{left:16px;top:7px;width:4px;height:9px} }
 /* cracha no fim */
 .cracha{position:relative;display:-webkit-box;display:-webkit-flex;display:flex;-webkit-box-align:center;-webkit-align-items:center;align-items:center;gap:12px;background:var(--papel);border:2px solid var(--linha);border-bottom-width:5px;border-radius:20px;padding:10px 18px 10px 10px;margin-top:14px;max-width:300px;-webkit-box-shadow:0 8px 18px rgba(50,40,20,.28);box-shadow:0 8px 18px rgba(50,40,20,.28);-webkit-animation:pop .5s;animation:pop .5s}
 .cracha .cfoto{width:62px;height:62px;-webkit-flex:none;flex:none;object-fit:contain;background:#fff6d8;border:2px solid var(--dourado-d);border-radius:50%;padding:3px}
@@ -276,6 +293,7 @@ h1{font-size:31px;font-weight:700;color:#fff;text-shadow:0 2px 0 var(--tinta-d),
 <div class="barra" id="barra"></div>
 <div class="banner" id="banner"><div class="msg" id="bmsg"></div><button class="cta2" id="bcta">Continuar</button></div>
 <audio id="narr" preload="auto"></audio>
+<audio id="vz" preload="none"></audio>
 <script>
 "use strict";
 /* ================= IMAGENS ================= */
@@ -1738,6 +1756,69 @@ function telaEdicao(){
   montaBarra(null,null);
   falar("ed_intro");
 }
+/* ============ ALTO-FALANTE POR RESPOSTA (acessibilidade) ============ */
+var VOZOK={"10g4vuk": 1, "10ikfwb": 1, "10pd7j4": 1, "10txxxz": 1, "10z081b": 1, "1179wlc": 1, "12z05m7": 1, "13psam1": 1, "13wys9": 1, "14a9u4w": 1, "14dpmla": 1, "14k3fhv": 1, "167gyfk": 1, "16hedvd": 1, "172kalp": 1, "17sejxy": 1, "1977tyw": 1, "1agppgi": 1, "1d544dv": 1, "1dhoh3v": 1, "1e0198f": 1, "1e0i3le": 1, "1e0i3lj": 1, "1e0i3yg": 1, "1ej4ba": 1, "1f4rcwc": 1, "1f751vr": 1, "1ft8os8": 1, "1ftxmjl": 1, "1g2ttiw": 1, "1gjdoe6": 1, "1hbzdle": 1, "1jaqlwn": 1, "1jj8ruc": 1, "1jj8vol": 1, "1jj8z1l": 1, "1jnkzrq": 1, "1k36okg": 1, "1ktnt5b": 1, "1oxzg44": 1, "1p23ikf": 1, "1pgipds": 1, "1pliap": 1, "1q8ovk": 1, "1qch3b4": 1, "1qklqiu": 1, "1u03wv5": 1, "1u6w6aq": 1, "1vuu8sw": 1, "1wd04p6": 1, "1wd0528": 1, "1wdcrnh": 1, "1wi5azh": 1, "1wi8byq": 1, "1wi8byt": 1, "1x98gxx": 1, "1xjiips": 1, "1xs62qq": 1, "1y3cof9": 1, "1ytgdx2": 1, "1ytge9z": 1, "2cini": 1, "2z5f0u": 1, "3x8tha": 1, "448gwz": 1, "46j5lh": 1, "46j5lk": 1, "47x89c": 1, "487x48": 1, "4880f4": 1, "4880fe": 1, "4aqsuc": 1, "4he56f": 1, "4k7rtb": 1, "4ywtx9": 1, "5a93n8": 1, "5tjc85": 1, "5tjc8j": 1, "5tss38": 1, "6vlbtl": 1, "74f4ut": 1, "7m8qtu": 1, "85nixi": 1, "8izckd": 1, "8izcnk": 1, "8ja11o": 1, "8mg9fd": 1, "92xfz": 1, "9ko017": 1, "9ko04b": 1, "9lbh70": 1, "9opmcw": 1, "cf72lj": 1, "cthvb1": 1, "eaicsx": 1, "edv63o": 1, "ep4d7m": 1, "ese28v": 1, "ese290": 1, "ese293": 1, "f58pt5": 1, "g0srl2": 1, "h7bc3m": 1, "ihwwsa": 1, "ihwwza": 1, "is4s9f": 1, "isac1j": 1, "j29eyy": 1, "jte60v": 1, "k6e3rq": 1, "l1s9zj": 1, "l1sdts": 1, "lfzrdp": 1, "mnmkym": 1, "n5l5j": 1, "o0r86a": 1, "oji9zk": 1, "p0k4vv": 1, "qvsbjl": 1, "r55gdv": 1, "r7sld7": 1, "rb5xlw": 1, "rogbeu": 1, "te89po": 1, "ucy2g1": 1, "uoshi3": 1, "vhmo6o": 1, "vlf0h6": 1, "vvries": 1, "vwcprm": 1, "w0sbnk": 1, "w3jnxq": 1, "wqgg8i": 1, "wqgg8s": 1, "wu6eqk": 1, "xtsz5h": 1, "ykeiw3": 1, "ykmror": 1, "yksdsc": 1, "z09o8q": 1, "zfn4n0": 1};
+var vz=document.getElementById("vz"), zapAtual=null;
+function chaveVoz(s){
+  s=(s||"").replace(/\s+/g," ").replace(/^ | $/g,"").toLowerCase();
+  var hh=5381,i; for(i=0;i<s.length;i++){ hh=((hh<<5)+hh+s.charCodeAt(i))>>>0; }
+  return hh.toString(36);
+}
+function temVoz(s){ var k=chaveVoz(s); return VOZOK[k]?k:null; }
+function paraZap(){ if(zapAtual){ zapAtual.className="zap"; zapAtual=null; } }
+vz.addEventListener("ended",paraZap);
+vz.addEventListener("error",paraZap);
+function tocaVoz(k,bt){
+  arma();
+  try{ narr.pause(); }catch(e){}
+  paraBoca();
+  paraZap();
+  try{ vz.pause(); vz.currentTime=0; }catch(e){}
+  vz.src="audio/op_"+k+".mp3";
+  var pr=vz.play(); if(pr&&pr["catch"]) pr["catch"](function(){ paraZap(); });
+  if(bt){ bt.className="zap tocando"; zapAtual=bt; }
+}
+function poeZap(elm){
+  /* nas caixas o contador ("0") entra no textContent -> uso so o rotulo */
+  var lab=elm.getElementsByClassName("cxt")[0];
+  var txt=lab?lab.textContent:elm.textContent;
+  /* o texto pode TROCAR no mesmo elemento (ex.: a ficha da linha do tempo).
+     por isso guardo o texto usado, nao um sim/nao. */
+  if(elm.__zaptxt===txt) return;
+  elm.__zaptxt=txt;
+  var velho=elm.getElementsByClassName("zap")[0];
+  if(velho&&velho.parentNode) velho.parentNode.removeChild(velho);
+  var k=temVoz(txt);
+  if(!k) return;
+  var bt=document.createElement("button");
+  bt.className="zap"; bt.type="button";
+  bt.setAttribute("aria-label","Ouvir esta resposta");
+  bt.appendChild(document.createElement("i"));
+  bt.appendChild(document.createElement("b"));
+  bt.appendChild(document.createElement("s"));
+  bt.onclick=function(ev){
+    if(ev&&ev.stopPropagation) ev.stopPropagation();
+    if(ev&&ev.preventDefault) ev.preventDefault();
+    tocaVoz(k,bt);
+    return false;
+  };
+  elm.appendChild(bt);
+}
+var ZAPSEL=".opt,.lig,.tlin,.fichaP,.cx,.peca";
+function poeVozes(){
+  if(!app) return;
+  var els=app.querySelectorAll(ZAPSEL),i;
+  for(i=0;i<els.length;i++) poeZap(els[i]);
+}
+(function(){
+  var pend=0;
+  function agenda(){ if(pend) return; pend=setTimeout(function(){ pend=0; poeVozes(); },60); }
+  if(window.MutationObserver){
+    var mo=new MutationObserver(agenda);
+    mo.observe(app,{childList:true,subtree:true,characterData:true});
+  }
+  agenda();
+})();
 function chave(s){ return (s||"").replace(/\s+/g," ").replace(/^ | $/g,"").toLowerCase(); }
 function zeraProgresso(){
   MIS={v:0,g:0,r:0,e:0};
