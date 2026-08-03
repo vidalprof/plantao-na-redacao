@@ -215,6 +215,26 @@ h1{font-size:31px;font-weight:700;color:#fff;text-shadow:0 2px 0 var(--tinta-d),
   .slot{width:35px;height:42px;line-height:38px;font-size:20px}
   .peca{padding:8px 11px;font-size:15px}
 }
+/* ===== cruzadinha / teste do ouvido / edicao especial ===== */
+.cruz{display:-webkit-box;display:-webkit-flex;display:flex;-webkit-flex-direction:column;flex-direction:column;gap:7px;margin-top:10px}
+.clinha{display:-webkit-box;display:-webkit-flex;display:flex;-webkit-box-align:center;align-items:center;gap:4px;padding:3px 5px;border-radius:11px;cursor:pointer}
+.clinha.ativa{background:rgba(255,212,59,.35)}
+.clinha.pronta{opacity:.75}
+.cnum{width:20px;-webkit-flex:none;flex:none;font-size:14px;font-weight:700;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.5);text-align:right;margin-right:3px}
+.cquad{width:31px;height:34px;-webkit-flex:none;flex:none;background:var(--papel);border:2px solid var(--linha);border-radius:7px;text-align:center;line-height:31px;font-size:18px;font-weight:700;color:var(--texto)}
+.cquad.cheio{background:#d8f5c6;border-color:var(--ok);color:#2c6b13;-webkit-animation:pop .25s;animation:pop .25s}
+.altofalante{width:120px;height:82px;margin-top:12px;background:var(--papel);border:2px solid var(--linha);border-bottom-width:5px;border-radius:18px;display:-webkit-box;display:-webkit-flex;display:flex;-webkit-box-align:center;align-items:center;-webkit-box-pack:center;justify-content:center;-webkit-box-shadow:0 6px 14px rgba(50,40,20,.22);box-shadow:0 6px 14px rgba(50,40,20,.22)}
+.ondas{display:-webkit-box;display:-webkit-flex;display:flex;-webkit-box-align:center;align-items:center;gap:5px;height:44px}
+.ondas i{display:block;width:7px;height:12px;border-radius:4px;background:var(--tinta);-webkit-animation:onda 1s ease-in-out infinite;animation:onda 1s ease-in-out infinite}
+.ondas i:nth-child(2){-webkit-animation-delay:.15s;animation-delay:.15s}
+.ondas i:nth-child(3){-webkit-animation-delay:.3s;animation-delay:.3s}
+.ondas i:nth-child(4){-webkit-animation-delay:.45s;animation-delay:.45s}
+.ondas i:nth-child(5){-webkit-animation-delay:.6s;animation-delay:.6s}
+@-webkit-keyframes onda{0%,100%{height:12px}50%{height:40px}}
+@keyframes onda{0%,100%{height:12px}50%{height:40px}}
+.vida{display:inline-block;width:14px;height:14px;border-radius:50%;background:#ef5a4a;margin-right:4px;-webkit-box-shadow:0 1px 3px rgba(0,0,0,.35);box-shadow:0 1px 3px rgba(0,0,0,.35)}
+.vida.ida{background:rgba(255,255,255,.35)}
+@media (max-height:720px){ .cquad{width:27px;height:30px;line-height:27px;font-size:16px} .altofalante{width:104px;height:70px} }
 /* cracha no fim */
 .cracha{position:relative;display:-webkit-box;display:-webkit-flex;display:flex;-webkit-box-align:center;-webkit-align-items:center;align-items:center;gap:12px;background:var(--papel);border:2px solid var(--linha);border-bottom-width:5px;border-radius:20px;padding:10px 18px 10px 10px;margin-top:14px;max-width:300px;-webkit-box-shadow:0 8px 18px rgba(50,40,20,.28);box-shadow:0 8px 18px rgba(50,40,20,.28);-webkit-animation:pop .5s;animation:pop .5s}
 .cracha .cfoto{width:62px;height:62px;-webkit-flex:none;flex:none;object-fit:contain;background:#fff6d8;border:2px solid var(--dourado-d);border-radius:50%;padding:3px}
@@ -338,7 +358,7 @@ function centroTela(e){var r=e.getBoundingClientRect();return [r.left+r.width/2,
 /* ================= MEDIÇÃO ================= */
 var MED={ini:(new Date()).getTime(),ev:[],dicas:0,pre:null,pos:null,manchete:""};
 var DOM={identificar:0.3,ofuncao:0.3,tempo:0.3,concordancia:0.3,formato:0.3,funcao:0.3,reconhecer:0.3,producao:0.3};
-var MIS={v:0,g:0,r:0};
+var MIS={v:0,g:0,r:0,e:0};
 var CONC={identificar:"VERBOS: achar o verbo (a ação)",ofuncao:"VERBOS: quem fez / o que fez",tempo:"VERBOS: tempo (ontem/hoje/amanhã)",concordancia:"VERBOS: concordância verbal",formato:"GÊNEROS: reconhecer pela forma",funcao:"GÊNEROS: para que serve (função)",reconhecer:"GÊNEROS: identificar o gênero",producao:"GÊNEROS: montar um texto"};
 function reg(c,ok,t){ MED.ev.push({c:c,ok:ok?1:0,t:t||1,ms:(new Date()).getTime()-MED.ini});
   var p=DOM[c]||0.3; DOM[c]= ok ? p+(1-p)*0.35 : p*0.62; salva(); }
@@ -1043,7 +1063,7 @@ function vEscreve(){
         var ce=centroTela(inp); faisca(ce[0],ce[1],"#6bd23f",14);
         setTimeout(function(){ idx++;
           if(idx>=ESCR.length){ depoisDaFala("vb_escreve_revela",9000,function(){
-            mostraBanner("Voc&#234; <b>escreveu</b> os verbos, sem escolher de lista!",vManchete); }); }
+            mostraBanner("Voc&#234; <b>escreveu</b> os verbos, sem escolher de lista!",vCruzada); }); }
           else passo();
         },1100);
       } else { err++; sErro(); consolo(); inp.style.borderColor="#ef5a4a";
@@ -1486,7 +1506,7 @@ function gEscreve(){
         var ce=centroTela(inp); faisca(ce[0],ce[1],"#6bd23f",14);
         setTimeout(function(){ idx++;
           if(idx>=GESC.length){ depoisDaFala("vg_escreve_revela",9000,function(){
-            mostraBanner("Voc&#234; escreveu nos <b>tr&#234;s</b> jeitos diferentes!",gPalavra); }); }
+            mostraBanner("Voc&#234; escreveu nos <b>tr&#234;s</b> jeitos diferentes!",gDitado); }); }
           else { err=0; passo(); }
         },1100);
       } else { err++; sErro(); inp.style.borderColor="#ef5a4a";
@@ -1553,9 +1573,174 @@ function gPalavra(){
   montaBarra("vg_palavra_dica","Leia a pista e fale o nome devagar.");
   falar("vg_palavra_intro");
 }
+/* ===== V-E: CRUZADINHA DOS VERBOS ===== */
+var CRUZ=[
+ {p:"MOLHOU", d:"O que a chuva fez com o p&#225;tio?", r:0,c:0,h:1},
+ {p:"CORREU", d:"O que o cachorro fez pelo corredor?", r:2,c:0,h:1},
+ {p:"TOCOU",  d:"O que o sino fez na hora do recreio?", r:4,c:0,h:1},
+ {p:"MORDEU", d:"O que o gato fez no peda&#231;o de queijo?", r:6,c:0,h:1}];
+function vCruzada(){
+  limpa();var t=el("div","tela");setProg(t,82);
+  var atual=0,err=0,feitos=0;
+  var c=el("div","centro");
+  c.appendChild(el("div","selo","CRUZADINHA DO JORNAL"));
+  var bal=el("div","balao","");c.appendChild(bal);
+  /* grade: uma linha por palavra, com o numero na frente */
+  var gr=el("div","cruz"),linhas=[],i,j;
+  for(i=0;i<CRUZ.length;i++){(function(k){
+    var L=el("div","clinha");
+    L.appendChild(el("div","cnum",(k+1)+""));
+    var cels=[];
+    for(j=0;j<CRUZ[k].p.length;j++){ var q=el("div","cquad",""); L.appendChild(q); cels.push(q); }
+    L.onclick=function(){ if(feitos>k) return; arma(); sTap(); atual=k; pede(); };
+    gr.appendChild(L); linhas.push({el:L,cels:cels});
+  })(i);}
+  c.appendChild(gr);
+  var letras=el("div","letras");c.appendChild(letras);
+  c.appendChild(el("div","hint","Toque nas letras na ordem certa."));
+  t.appendChild(c);app.appendChild(t);
+  function pede(){
+    var it=CRUZ[atual],k;
+    bal.innerHTML="<b>"+(atual+1)+".</b> "+it.d;
+    for(k=0;k<linhas.length;k++) linhas[k].el.className="clinha"+(k===atual?" ativa":"")+(k<feitos?" pronta":"");
+    letras.innerHTML="";
+    var passo=0;
+    var ls=baguncar(it.p.split(""));
+    for(k=0;k<ls.length;k++){(function(Lt){
+      var b=el("div","tec",Lt);
+      b.onclick=function(){ arma();
+        if(b.className.indexOf("usada")>=0) return;
+        if(Lt===it.p.charAt(passo)){
+          linhas[atual].cels[passo].innerHTML=Lt;
+          linhas[atual].cels[passo].className="cquad cheio";
+          b.className="tec usada"; sPop(passo); passo++;
+          if(passo>=it.p.length){
+            sCerto(); reg("identificar",err===0,err+1); err=0; feitos++;
+            var ce=centroTela(linhas[atual].el); faisca(ce[0],ce[1],"#6bd23f",14);
+            if(feitos>=CRUZ.length){
+              setTimeout(function(){ depoisDaFala("vb_cruz_revela",9000,function(){
+                mostraBanner("Todas as palavras da cruzadinha s&#227;o <b>verbos</b>!",vManchete); }); },700);
+            } else { atual=feitos; setTimeout(pede,800); }
+          }
+        } else { err++; b.className="tec no"; sErro();
+          setTimeout(function(){ if(b.className==="tec no") b.className="tec"; },440);
+          if(err===3) consolo(); }
+      };
+      letras.appendChild(b);
+    })(ls[k]);}
+  }
+  pede();
+  montaBarra("vb_cruz_dica","Pergunte: o que aconteceu? A resposta &#233; o verbo.");
+  falar("vb_cruz_intro");
+}
+
+/* ===== G-E: TESTE DO OUVIDO (so audio, sem texto na tela) ===== */
+var DITADO=[{a:"dit1",g:0},{a:"dit2",g:1},{a:"dit3",g:2},
+            {a:"dit4",g:0},{a:"dit5",g:1},{a:"dit6",g:2}];
+function gDitado(){
+  limpa();var t=el("div","tela");setProg(t,74);
+  var fila=baguncar(DITADO.slice(0)),i2=0,err=0,fimD=false;
+  var c=el("div","centro");
+  c.appendChild(el("div","selo","TESTE DO OUVIDO"));
+  c.appendChild(el("div","balao","Ou&#231;a com aten&#231;&#227;o. Que tipo de texto &#233; este?"));
+  var alto=el("div","altofalante");
+  alto.appendChild(el("div","ondas","<i></i><i></i><i></i><i></i><i></i>"));
+  var bt=el("button","btn peq","Ouvir de novo");bt.style.marginTop="10px";
+  bt.onclick=function(){ arma(); if(!fimD) falar(fila[i2].a); };
+  c.appendChild(alto);c.appendChild(bt);
+  var cxs=el("div","caixas"),nomes=["NOT&#205;CIA","CONTO","CARTA"],k;
+  for(k=0;k<3;k++){(function(j){
+    var d=el("div","cx");d.appendChild(el("div","cxt",nomes[j]));
+    d.onclick=function(){ resp(j,d); };
+    cxs.appendChild(d);
+  })(k);}
+  c.appendChild(cxs);
+  c.appendChild(el("div","hint","S&#227;o 6 trechos, s&#243; de ouvido."));
+  t.appendChild(c);app.appendChild(t);
+  function toca(){ falar(fila[i2].a); }
+  function resp(j,d){ arma();
+    if(fimD||i2>=fila.length) return;
+    if(fila[i2].g===j){ sCerto(); d.className="cx ok";
+      var ce=centroTela(d); faisca(ce[0],ce[1],"#6bd23f",10);
+      reg("reconhecer",err===0,err+1); err=0;
+      setTimeout(function(){ d.className="cx"; i2++;
+        if(i2>=fila.length){ fimD=true; depoisDaFala("vg_dit_revela",9000,function(){
+          mostraBanner("Voc&#234; reconheceu o texto <b>s&#243; de ouvir</b>!",gPalavra); }); }
+        else toca();
+      },500);
+    } else { err++; sErro(); consolo(); d.className="cx no";
+      setTimeout(function(){ d.className="cx"; },520); }
+  }
+  montaBarra("vg_dit_dica","Data e hora &#233; not&#237;cia. Era uma vez &#233; conto. Recado &#233; carta.");
+  depoisDaFala("vg_dit_intro",11000,function(){ toca(); });
+}
+
+/* ===== MISSAO 4: EDICAO ESPECIAL (desafio final, com vidas) ===== */
+var EDIC=[
+ {p:"Ontem os alunos ___ a horta.",o:["plantaram","plantar","planta"],c:0},
+ {p:"Qual destas &#233; uma palavra de <b>a&#231;&#227;o</b>?",o:["janela","correu","mesa"],c:1},
+ {p:"\"Era uma vez um sino m&#225;gico...\" &#233; come&#231;o de:",o:["not&#237;cia","conto","carta"],c:1},
+ {p:"Agora a professora ___ no quadro.",o:["escreveu","escreve","escrever"],c:1},
+ {p:"\"Querida diretora,\" come&#231;a uma:",o:["carta","receita","not&#237;cia"],c:0},
+ {p:"Amanh&#227; o sino ___ mais cedo.",o:["tocou","toca","vai tocar"],c:2},
+ {p:"Texto com linhas curtas e rima &#233;:",o:["poema","verbete","not&#237;cia"],c:0},
+ {p:"N&#243;s ___ o port&#227;o todo dia &#224;s sete.",o:["abrimos","abriu","abrir"],c:0},
+ {p:"O texto que <b>explica o que a palavra &#233;</b> chama-se:",o:["conto","verbete","carta"],c:1},
+ {p:"As professoras ___ as sementes.",o:["trouxe","trouxeram","trazer"],c:1},
+ {p:"Not&#237;cia conta o que:",o:["algu&#233;m inventou","aconteceu de verdade","vai ser sonhado"],c:1},
+ {p:"O time ___ o jogo de ontem.",o:["ganha","ganhar","ganhou"],c:2}];
+function telaEdicao(){
+  limpa();var t=el("div","tela");
+  var fila=baguncar(EDIC.slice(0)),i2=0,pts=0,vidas=3,fimE=false;
+  var c=el("div","centro");
+  c.appendChild(el("div","selo","EDI&#199;&#195;O ESPECIAL"));
+  var pl=el("div","placar","");c.appendChild(pl);
+  var bal=el("div","balao","");c.appendChild(bal);
+  var op=el("div","opts col");c.appendChild(op);
+  c.appendChild(el("div","hint","Vale tudo o que voc&#234; aprendeu."));
+  t.appendChild(c);app.appendChild(t);
+  function marcador(){
+    var v="",k; for(k=0;k<3;k++) v+='<span class="vida'+(k<vidas?"":" ida")+'"></span>';
+    pl.innerHTML=v+' &nbsp; <b>'+pts+'</b> de '+fila.length;
+  }
+  function mostra(){
+    marcador();
+    var q=fila[i2]; bal.innerHTML="<b>"+(i2+1)+".</b> "+q.p;
+    op.innerHTML="";
+    var ordem=[0,1,2],k;
+    for(k=0;k<ordem.length;k++){(function(j){
+      var o=el("div","opt",q.o[j]);
+      o.onclick=function(){ if(fimE||o._u) return; arma(); o._u=1;
+        if(j===q.c){ o.className="opt ok"; sCerto(); pts++;
+          reg(i2%2?"reconhecer":"concordancia",true,1);
+          setTimeout(function(){ i2++;
+            if(i2>=fila.length) fecha(true); else mostra(); },600);
+        } else { o.className="opt no"; sErro(); vidas--; marcador();
+          reg(i2%2?"reconhecer":"concordancia",false,2);
+          if(vidas<=0){ setTimeout(function(){ fecha(false); },700); }
+          else { consolo(); setTimeout(function(){ o.className="opt"; o._u=0; },700); }
+        }
+      };
+      op.appendChild(o);
+    })(ordem[k]);}
+  }
+  function fecha(ganhou){
+    fimE=true;
+    if(ganhou){ MIS.e=1; salva(); sFesta(); festa();
+      depoisDaFala("ed_fim",9000,function(){
+        mostraBanner("Edi&#231;&#227;o fechada com <b>"+pts+"</b> acerto"+(pts===1?"":"s")+"!",telaMenu); });
+    } else {
+      depoisDaFala("ed_perdeu",9000,function(){
+        mostraBanner("Voc&#234; fez <b>"+pts+"</b> acerto"+(pts===1?"":"s")+". Bora refazer a mat&#233;ria?",telaMenu); });
+    }
+  }
+  mostra();
+  montaBarra(null,null);
+  falar("ed_intro");
+}
 function chave(s){ return (s||"").replace(/\s+/g," ").replace(/^ | $/g,"").toLowerCase(); }
 function zeraProgresso(){
-  MIS={v:0,g:0,r:0};
+  MIS={v:0,g:0,r:0,e:0};
   MED={ini:(new Date()).getTime(),ev:[],dicas:0,pre:null,pos:null,manchete:""};
   DOM={identificar:0.3,ofuncao:0.3,tempo:0.3,concordancia:0.3,formato:0.3,funcao:0.3,reconhecer:0.3,producao:0.3};
 }
@@ -1579,9 +1764,12 @@ function telaMenu(){limpa();var t=el("div","tela");var c=el("div","centro");
        "Abre quando voc&#234; terminar a <b>Miss&#227;o 1</b>.",function(){gAbertura();});
   card("vb_jornal","Miss&#227;o 3: Desafio rel&#226;mpago","Contra o rel&#243;gio: &#233; verbo ou n&#227;o &#233;?",MIS.r,!MIS.g,
        "Abre quando voc&#234; terminar a <b>Miss&#227;o 2</b>.",function(){telaRelampago();});
+  card("vb_quadro","Miss&#227;o 4: Edi&#231;&#227;o Especial","O desafio final: 12 perguntas e 3 chances",MIS.e,!MIS.r,
+       "Abre quando voc&#234; terminar a <b>Miss&#227;o 3</b>.",function(){telaEdicao();});
   c.appendChild(m);
   var av="";
-  if(MIS.v&&MIS.g&&MIS.r) av="Voc&#234; fechou as <b>tr&#234;s miss&#245;es</b>! Pode jogar de novo quando quiser.";
+  if(MIS.v&&MIS.g&&MIS.r&&MIS.e) av="Voc&#234; fechou <b>todas as miss&#245;es</b>! Pode jogar de novo quando quiser.";
+  else if(MIS.r) av="Voc&#234; abriu a <b>Edi&#231;&#227;o Especial</b>!";
   else if(MIS.g) av="Voc&#234; abriu o <b>Desafio rel&#226;mpago</b>!";
   else if(MIS.v) av="Voc&#234; abriu a <b>Miss&#227;o 2</b>!";
   if(av){ var f=el("div","balao",av); f.style.marginTop="12px"; c.appendChild(f); }
