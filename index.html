@@ -91,7 +91,7 @@ h1{font-size:31px;font-weight:700;color:#fff;text-shadow:0 2px 0 var(--tinta-d),
 .campo{width:100%;max-width:310px;font-family:inherit;font-size:17px;font-weight:600;padding:13px 15px;border-radius:16px;border:2px solid var(--linha);text-align:center;margin-top:10px;color:var(--texto)}
 .banner{position:fixed;left:0;right:0;bottom:0;z-index:20;padding:16px 16px calc(18px + env(safe-area-inset-bottom));max-width:520px;margin:0 auto;
   -webkit-transform:translateY(115%);transform:translateY(115%);-webkit-transition:-webkit-transform .35s cubic-bezier(.2,.8,.3,1);transition:transform .35s cubic-bezier(.2,.8,.3,1);border-top-left-radius:24px;border-top-right-radius:24px}
-.banner.show{-webkit-transform:none;transform:none}.banner.bom{background:#dfeeff}
+.banner{pointer-events:none}.banner.show{-webkit-transform:none;transform:none;pointer-events:auto}.banner.bom{background:#dfeeff}
 .banner .msg{font-size:17px;font-weight:700;color:var(--tinta-d);margin-bottom:11px;text-align:center}
 .banner .cta2{width:100%;border:0;cursor:pointer;font-family:inherit;font-weight:700;font-size:17px;color:#fff;padding:14px;border-radius:16px;background:var(--tinta);-webkit-box-shadow:0 4px 0 var(--tinta-d);box-shadow:0 4px 0 var(--tinta-d);text-transform:uppercase}
 #conf{position:fixed;inset:0;z-index:15;pointer-events:none}
@@ -262,6 +262,7 @@ h1{font-size:31px;font-weight:700;color:#fff;text-shadow:0 2px 0 var(--tinta-d),
 .cracha:before{content:"";position:absolute;top:-7px;left:50%;margin-left:-11px;width:22px;height:9px;border:2px solid var(--linha);border-bottom:0;border-radius:11px 11px 0 0;background:transparent}
 .grade{display:-webkit-box;display:-webkit-flex;display:flex;-webkit-flex-wrap:wrap;flex-wrap:wrap;width:100%;max-width:328px;margin-top:8px;background:var(--papel);border:2px solid var(--linha);border-radius:14px;padding:5px}
 .cel{width:11.11%;padding-top:0;height:32px;line-height:32px;text-align:center;font-size:15px;font-weight:700;cursor:pointer;color:#5a5346;border-radius:6px}
+.cel{min-height:34px}
 .cel.sel{background:var(--dourado);color:#5a4200}
 .cel.ok{background:-webkit-linear-gradient(top,#6bd23f,#2f8f18);background:linear-gradient(#6bd23f,#2f8f18);color:#fff;font-weight:800;-webkit-box-shadow:inset 0 0 0 1px #24710f;box-shadow:inset 0 0 0 1px #24710f}
 
@@ -285,6 +286,130 @@ h1{font-size:31px;font-weight:700;color:#fff;text-shadow:0 2px 0 var(--tinta-d),
 .bin.nao{background:-webkit-linear-gradient(top,#ff9a8f,#ef5a4a);background:linear-gradient(#ff9a8f,#ef5a4a)}
 .btn.peq{font-size:17px;padding:13px 26px;-webkit-animation:none;animation:none}
 @media (max-height:900px){ .bin{width:126px;padding:13px 8px;font-size:15px} }
+
+/* ===== JANELA BAIXA e LETRA MAIOR — mesmo conserto da Doceria (ago/2026) =====
+   ⚠️ LICAO PAGA (foto do Marcos): numa janela baixa as OPCOES DE RESPOSTA caiam
+   fora da tela e a crianca via so o enunciado. E no computador a letra ficava
+   pequena. Sao tres casos, e este bloco fica no FIM do CSS para ganhar dos outros.
+
+   1) TELA GRANDE: letra maior (o monitor fica longe do olho).
+      ATENCAO: o monitor 1366x768 da escola e MAIS BAIXO que um celular (~640px de
+      janela util). Por isso o aumento e so de LETRA quando a janela e baixa.      */
+@media (min-width:760px) and (min-height:560px){
+  .balao{font-size:20px;max-width:560px;padding:14px 19px}
+  .dicain{font-size:19px}
+  h1{font-size:38px}
+  .sub{font-size:18px}
+  .selo{font-size:15px;padding:6px 15px}
+  .hint{font-size:16px}
+  .opt{font-size:19px}
+  .btn{font-size:22px}
+  .mini{font-size:17px}
+  .campo{font-size:20px}
+  .banner .msg,.banner .cta2{font-size:20px}
+  .pal,.pc,.peca,.vaga,.lig,.tlin,.fichaP{font-size:18px}
+  .cx .cxt{font-size:16px}
+  .cel{font-size:18px}
+  .pchip{font-size:16px}
+  .relcard{font-size:32px}
+  .bin{font-size:19px}
+  .cracha .cnome{font-size:24px}
+}
+@media (min-width:760px) and (min-height:880px){
+  .balao{font-size:22px;padding:16px 21px}
+  h1{font-size:42px}
+}
+/* 2) JANELA BAIXA: tudo encolhe para a RESPOSTA nunca cair fora da tela */
+@media (max-height:600px){
+  .tela{padding:calc(28px + env(safe-area-inset-top)) 12px calc(62px + env(safe-area-inset-bottom))}
+  h1{font-size:26px}.sub{font-size:13.5px;margin-bottom:6px}
+  .selo{font-size:11px;padding:4px 10px;margin-bottom:5px}
+  .balao{font-size:15px;padding:9px 13px;line-height:1.28}
+  .dicain{font-size:14px}
+  .hint{font-size:12px;margin-top:7px}
+  .opts{margin-top:9px;gap:7px}
+  .opt{padding:8px 11px;font-size:15px;border-bottom-width:4px}
+  .pcs{margin-top:9px;gap:6px}
+  .pc,.peca,.vaga{padding:7px 11px;font-size:14.5px}
+  .frase{margin-top:9px;gap:5px}.pal{padding:6px 9px;font-size:15px}
+  .cols{gap:7px}.lig{padding:6px 5px;font-size:12.5px;min-height:40px}
+  .cel{font-size:12.5px;height:30px;line-height:30px}
+  .pchip{font-size:11.5px;padding:3px 8px}
+  .btn{font-size:17px;padding:11px 20px;min-height:42px}
+  .relcard{font-size:22px}
+  .cx{padding:8px 10px}.cx .cxt{font-size:12.5px}.cx .cxn{font-size:17px}
+  .campo{font-size:16px;padding:9px 12px}
+}
+/* 3) JANELA MUITO BAIXA (~430px): ultimo aperto */
+@media (max-height:430px){
+  .tela{padding:calc(24px + env(safe-area-inset-top)) 10px calc(56px + env(safe-area-inset-bottom))}
+  .selo{font-size:10px;padding:3px 9px;margin-bottom:4px}
+  .balao{font-size:14px;padding:7px 11px}
+  .opts{margin-top:7px;gap:5px}
+  .opt{padding:6px 10px;font-size:14px}
+  .pc,.peca,.vaga{padding:5px 9px;font-size:13.5px}
+  .pal{padding:5px 8px;font-size:14px}
+  .cel{font-size:11.5px;height:27px;line-height:27px}
+  .hint{display:none}
+  .btn{font-size:16px;padding:11px 18px;min-height:42px}
+}
+
+/* ⚠️ ERRO PAGO (Marcos, ago/2026): a caixa de explicacao ficava COLADA na imagem
+   (0px de vao na Redacao, 9px na Legenda). Consertar bloco por bloco nao pega
+   todos — cada tela monta uma coisa diferente antes do balao. Regra unica: TODO
+   balao que vem depois de alguma coisa ganha ar. Depois do selo fica curto, que
+   ali eles sao um par. Medir com /tmp/vao.js, nao confiar no olho.            */
+.centro > .balao{margin-top:15px}
+.centro > .selo + .balao{margin-top:6px}
+.centro > .pedido{margin-top:15px}
+@media (max-height:600px){
+  .centro > .balao{margin-top:9px}
+  .centro > .pedido{margin-top:9px}
+}
+
+@media (max-height:600px){
+  .polaroid{padding:6px 6px 20px;margin-top:4px;margin-bottom:8px}
+  .polaroid img{width:150px;height:112px}
+  .polaroid .cap{font-size:11px}
+  .foto{width:190px;height:142px;padding:6px}
+  .gfoto img{width:74px;height:56px}
+  .gfoto{padding:4px;border-width:2px}
+  .galeria{margin:8px 0;gap:6px}
+  .jornal{width:214px;margin-top:6px}
+  .clique,.pingo,.cacau{width:96px;height:96px}
+  .clique.gg,.pingo.gg,.cacau.gg{width:128px;height:128px}
+  .clique.pq,.pingo.pq,.cacau.pq{width:74px;height:74px}
+}
+@media (max-height:430px){
+  .polaroid img{width:112px;height:84px}
+  .foto{width:150px;height:112px;padding:5px}
+  .gfoto img{width:60px;height:46px}
+  .jornal{width:186px}
+  .clique,.pingo,.cacau{width:74px;height:74px}
+  .clique.gg,.pingo.gg,.cacau.gg{width:96px;height:96px}
+  .clique.pq,.pingo.pq,.cacau.pq{width:58px;height:58px}
+}
+
+/* janela EXTREMA (~360px de altura, como a foto que o Marcos mandou):
+   ultimo recurso — o titulo da fase sai e a imagem encolhe, para a RESPOSTA
+   nunca ficar fora do alcance. Melhor perder o enfeite do que a resposta. */
+@media (max-height:380px){
+  .tela{padding:calc(16px + env(safe-area-inset-top)) 8px calc(50px + env(safe-area-inset-bottom))}
+  .selo{display:none}
+  .balao{font-size:13px;padding:6px 10px}
+  .centro > .balao{margin-top:9px}
+  .opts{margin-top:6px;gap:4px}
+  .opt{padding:5px 9px;font-size:13px;border-bottom-width:3px}
+  .polaroid{padding:4px 4px 14px;margin:2px 0 5px}
+  .polaroid img{width:96px;height:72px}
+  .polaroid .cap{display:none}
+  .foto{width:124px;height:94px;padding:4px}
+  .gfoto img{width:52px;height:40px}
+  .jornal{width:170px}
+  .clique,.pingo,.cacau{width:60px;height:60px}
+  .bandeja{min-width:50px;min-height:38px}
+  .bandeja .doces{min-height:28px}.bandeja .doces img{width:13px;height:13px}
+}
 </style></head>
 <body>
 <div id="bg"></div>
